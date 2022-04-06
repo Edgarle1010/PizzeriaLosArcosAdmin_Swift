@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="orderCell" rowHeight="122" id="KGk-i7-Jjw" customClass="OrderTableViewCell" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="516" height="122"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="516" height="122"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZd-Zx-RdB">
+                        <rect key="frame" x="15" y="7.5" width="486" height="107"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SyP-hj-SIE">
+                                <rect key="frame" x="10" y="5" width="466" height="97"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gub-3e-ies">
+                                        <rect key="frame" x="0.0" y="0.0" width="93" height="97"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="OqI-Dy-d8W">
+                                                <rect key="frame" x="0.0" y="0.0" width="93" height="43.5"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                                <color key="textColor" name="primaryColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$134.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="dyC-qD-yfu">
+                                                <rect key="frame" x="0.0" y="53.5" width="93" height="43.5"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                                <color key="textColor" name="primaryColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="748-vz-DNp">
+                                        <rect key="frame" x="103" y="0.0" width="363" height="97"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tF6-Cu-z7m">
+                                                <rect key="frame" x="0.0" y="0.0" width="363" height="29"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edgar Francisco López Enríquez" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="DjB-ks-9Er">
+                                                        <rect key="frame" x="0.0" y="0.0" width="179" height="29"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                                        <color key="textColor" name="primaryColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+526251250096" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="QSg-dk-I7c">
+                                                        <rect key="frame" x="184" y="0.0" width="179" height="29"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                                        <color key="textColor" name="primaryColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eBK-ad-Z9J" userLabel="statusView">
+                                                <rect key="frame" x="0.0" y="34" width="363" height="29"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estado:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="AyE-Q4-c0o">
+                                                        <rect key="frame" x="0.0" y="5" width="58" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pedido" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="dc1-p2-0cT">
+                                                        <rect key="frame" x="68" y="5" width="53.5" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                        <color key="textColor" name="primaryColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="dc1-p2-0cT" firstAttribute="centerY" secondItem="eBK-ad-Z9J" secondAttribute="centerY" id="HTA-TS-aRd"/>
+                                                    <constraint firstItem="AyE-Q4-c0o" firstAttribute="centerY" secondItem="eBK-ad-Z9J" secondAttribute="centerY" id="aZD-n3-u4A"/>
+                                                    <constraint firstItem="AyE-Q4-c0o" firstAttribute="leading" secondItem="eBK-ad-Z9J" secondAttribute="leading" id="w2Z-th-cd8"/>
+                                                    <constraint firstItem="dc1-p2-0cT" firstAttribute="leading" secondItem="AyE-Q4-c0o" secondAttribute="trailing" constant="10" id="yGj-HY-hn3"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NbC-4h-cIJ" userLabel="statusView">
+                                                <rect key="frame" x="0.0" y="68" width="363" height="29"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hora estimada de entrega:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="17H-8k-Ip3">
+                                                        <rect key="frame" x="0.0" y="5" width="202.5" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:00 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Lum-mI-beQ">
+                                                        <rect key="frame" x="212.5" y="5" width="61" height="19.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                        <color key="textColor" name="primaryColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="17H-8k-Ip3" firstAttribute="leading" secondItem="NbC-4h-cIJ" secondAttribute="leading" id="IJ2-0T-REQ"/>
+                                                    <constraint firstItem="Lum-mI-beQ" firstAttribute="leading" secondItem="17H-8k-Ip3" secondAttribute="trailing" constant="10" id="Y6c-FI-JkB"/>
+                                                    <constraint firstItem="Lum-mI-beQ" firstAttribute="centerY" secondItem="NbC-4h-cIJ" secondAttribute="centerY" id="eeu-38-eB2"/>
+                                                    <constraint firstItem="17H-8k-Ip3" firstAttribute="centerY" secondItem="NbC-4h-cIJ" secondAttribute="centerY" id="gAd-Mv-ANN"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="gub-3e-ies" firstAttribute="width" secondItem="SyP-hj-SIE" secondAttribute="width" multiplier="1:5" id="e3A-pA-Dnu"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="thirdColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="SyP-hj-SIE" secondAttribute="bottom" constant="5" id="EiX-8Y-J2Z"/>
+                            <constraint firstItem="SyP-hj-SIE" firstAttribute="top" secondItem="JZd-Zx-RdB" secondAttribute="top" constant="5" id="Jcl-UL-RkO"/>
+                            <constraint firstItem="SyP-hj-SIE" firstAttribute="leading" secondItem="JZd-Zx-RdB" secondAttribute="leading" constant="10" id="QoN-t2-bKi"/>
+                            <constraint firstAttribute="trailing" secondItem="SyP-hj-SIE" secondAttribute="trailing" constant="10" id="w5c-aE-mE4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="JZd-Zx-RdB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="119-IJ-bNl"/>
+                    <constraint firstAttribute="bottom" secondItem="JZd-Zx-RdB" secondAttribute="bottom" constant="7.5" id="OD2-NY-M29"/>
+                    <constraint firstAttribute="trailing" secondItem="JZd-Zx-RdB" secondAttribute="trailing" constant="15" id="ebg-CI-mf4"/>
+                    <constraint firstItem="JZd-Zx-RdB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7.5" id="non-17-0OU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="clientNameLabel" destination="DjB-ks-9Er" id="LAX-jV-dYg"/>
+                <outlet property="clientPhoneLabel" destination="QSg-dk-I7c" id="dbz-uL-Pap"/>
+                <outlet property="folioLabel" destination="OqI-Dy-d8W" id="cyE-eY-02M"/>
+                <outlet property="priceLabel" destination="dyC-qD-yfu" id="cq6-WE-2ke"/>
+                <outlet property="statusLabel" destination="dc1-p2-0cT" id="Zaf-xh-sQL"/>
+                <outlet property="timeEstimatedDelivery" destination="Lum-mI-beQ" id="PwV-ey-2fY"/>
+                <outlet property="viewCell" destination="JZd-Zx-RdB" id="hh5-mN-EoS"/>
+            </connections>
+            <point key="canvasLocation" x="278.26086956521743" y="133.25892857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="primaryColor">
+            <color red="0.76499998569488525" green="0.41600000858306885" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="thirdColor">
+            <color red="0.9179999828338623" green="0.86299997568130493" blue="0.65100002288818359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

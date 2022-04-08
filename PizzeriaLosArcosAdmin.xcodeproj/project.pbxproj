@@ -29,6 +29,9 @@
 		B3F905C727F2D3AF00E647B9 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F905C627F2D3AF00E647B9 /* Util.swift */; };
 		B3F905C927F2D4A300E647B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3F905C827F2D4A300E647B9 /* GoogleService-Info.plist */; };
 		B3F905CB27F2D4AB00E647B9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F905CA27F2D4AB00E647B9 /* Constants.swift */; };
+		B3FB338627FFD5B3006199DA /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FB338527FFD5B3006199DA /* OrderDetailsViewController.swift */; };
+		B3FB338927FFF1DB006199DA /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3FB338727FFF1DB006199DA /* ItemTableViewCell.xib */; };
+		B3FB338A27FFF1DB006199DA /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FB338827FFF1DB006199DA /* ItemTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +62,9 @@
 		B3F905C627F2D3AF00E647B9 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		B3F905C827F2D4A300E647B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3F905CA27F2D4AB00E647B9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B3FB338527FFD5B3006199DA /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
+		B3FB338727FFF1DB006199DA /* ItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
+		B3FB338827FFF1DB006199DA /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,7 @@
 				B3F905B127F2CD3800E647B9 /* SceneDelegate.swift */,
 				B3E6FFDE27F403AD006AF6AE /* AppManager.swift */,
 				B3D03D8C27FD4E5F00760593 /* PushNotificationManager.swift */,
+				B3D03D8E27FD506800760593 /* PushNotificationSender.swift */,
 				B3F905C327F2CEF500E647B9 /* Models */,
 				B3F905C427F2CEFE00E647B9 /* Views */,
 				B3F905C527F2CF1C00E647B9 /* Controllers */,
@@ -125,7 +132,6 @@
 				B3F905BD27F2CD3800E647B9 /* Info.plist */,
 				B3F905C827F2D4A300E647B9 /* GoogleService-Info.plist */,
 				B3F905CA27F2D4AB00E647B9 /* Constants.swift */,
-				B3D03D8E27FD506800760593 /* PushNotificationSender.swift */,
 			);
 			path = PizzeriaLosArcosAdmin;
 			sourceTree = "<group>";
@@ -145,6 +151,8 @@
 		B3F905C427F2CEFE00E647B9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B3FB338827FFF1DB006199DA /* ItemTableViewCell.swift */,
+				B3FB338727FFF1DB006199DA /* ItemTableViewCell.xib */,
 				B3F905B527F2CD3800E647B9 /* Main.storyboard */,
 				B3E6FFE227F40A9E006AF6AE /* OrderTableViewCell.swift */,
 				B3E6FFE327F40A9E006AF6AE /* OrderTableViewCell.xib */,
@@ -158,6 +166,7 @@
 				B3F905B327F2CD3800E647B9 /* LoginViewController.swift */,
 				B3E6FFDC27F401C2006AF6AE /* TabBarController.swift */,
 				B3E6FFE027F40407006AF6AE /* InProcessViewController.swift */,
+				B3FB338527FFD5B3006199DA /* OrderDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -226,6 +235,7 @@
 				B3E6FFE527F40A9E006AF6AE /* OrderTableViewCell.xib in Resources */,
 				B3F905C927F2D4A300E647B9 /* GoogleService-Info.plist in Resources */,
 				B3F905B927F2CD3800E647B9 /* Assets.xcassets in Resources */,
+				B3FB338927FFF1DB006199DA /* ItemTableViewCell.xib in Resources */,
 				B3F905B727F2CD3800E647B9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,10 +299,12 @@
 				B3F905B027F2CD3800E647B9 /* AppDelegate.swift in Sources */,
 				B3E6FFDD27F401C2006AF6AE /* TabBarController.swift in Sources */,
 				B3E6FFED27F4129C006AF6AE /* Item.swift in Sources */,
+				B3FB338A27FFF1DB006199DA /* ItemTableViewCell.swift in Sources */,
 				B3E6FFE127F40407006AF6AE /* InProcessViewController.swift in Sources */,
 				B3E6FFE427F40A9E006AF6AE /* OrderTableViewCell.swift in Sources */,
 				B3E6FFEC27F4129C006AF6AE /* ExtraIngredient.swift in Sources */,
 				B3F905B227F2CD3800E647B9 /* SceneDelegate.swift in Sources */,
+				B3FB338627FFD5B3006199DA /* OrderDetailsViewController.swift in Sources */,
 				B3D03D8F27FD506800760593 /* PushNotificationSender.swift in Sources */,
 				B3F905C727F2D3AF00E647B9 /* Util.swift in Sources */,
 			);

@@ -20,6 +20,7 @@ class InProcessViewController: UIViewController {
     let db = Firestore.firestore()
     
     var ordersList: [Order] = []
+    var order: Order?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -239,6 +240,13 @@ class InProcessViewController: UIViewController {
         return
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segues.inProccessToOrderDetails {
+            let destinationVC = segue.destination as! OrderDetailsViewController
+            destinationVC.order = order
+        }
+    }
+    
 }
 
 
@@ -329,7 +337,8 @@ extension InProcessViewController: UITableViewDelegate, UITableViewDataSource {
                                            image: UIImage(named: "more"),
                                            identifier: nil
                 ) { _ in
-                    
+                    self.order = currOrder
+                    self.performSegue(withIdentifier: K.Segues.inProccessToOrderDetails, sender: self)
                 }
                 
                 let origImage = UIImage(named: "delete")

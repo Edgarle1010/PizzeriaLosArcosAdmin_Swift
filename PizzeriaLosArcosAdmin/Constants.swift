@@ -118,6 +118,8 @@ struct K {
         static let add = "add"
         static let delete = "delete"
         static let back = "back"
+        static let print = "print"
+        static let more = "more"
     }
     
     struct Firebase {
@@ -143,6 +145,7 @@ struct K {
         static let status = "status"
         
         static let ordersCollection = "orders"
+        static let folio = "folio"
         static let client = "client"
         static let state = "status"
         static let dateProcessed = "dateProcessed"
@@ -180,6 +183,8 @@ struct K {
         static let moreToAbout = "MoreToAbout"
         static let userInformationToEditUserName = "UserInformationToEditUserName"
         static let userInformationToChangePassword = "UserInformationToChangePassword"
+        
+        static let inProccessToOrderDetails = "InProccessToOrderDetails"
     }
     
     struct ViewControllers {

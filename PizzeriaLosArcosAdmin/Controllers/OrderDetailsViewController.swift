@@ -21,10 +21,10 @@ class OrderDetailsViewController: UIViewController {
     
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var dateRequest: UILabel!
-    @IBOutlet weak var dateProcessed: UILabel!
-    @IBOutlet weak var dateFinished: UILabel!
-    @IBOutlet weak var dateDelivered: UILabel!
+    @IBOutlet weak var dateRequestLabel: UILabel!
+    @IBOutlet weak var dateProcessedLabel: UILabel!
+    @IBOutlet weak var dateFinishedLabel: UILabel!
+    @IBOutlet weak var dateDeliveredLabel: UILabel!
     
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var statusLabel: UILabel!
@@ -51,13 +51,15 @@ class OrderDetailsViewController: UIViewController {
         }
         
         loadOrderDetails(order)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        
     }
     
+    @IBAction func backPressed(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
     
     func loadViews() {
         let backButtonImage = UIImage(named: K.Images.back)
@@ -88,28 +90,211 @@ class OrderDetailsViewController: UIViewController {
         db.collection(K.Firebase.ordersCollection)
             .whereField(K.Firebase.folio, isEqualTo: order.folio)
             .addSnapshotListener { querySnapshot, error in
-            ProgressHUD.dismiss()
-            self.items = []
-            if let error = error {
-                self.alert(title: K.Texts.problemOcurred, message: error.localizedDescription)
-            } else {
-                if let documents = querySnapshot?.documents {
-                    for doc in documents {
-                        let result = Result {
-                            try doc.data(as: Order.self)
+                ProgressHUD.dismiss()
+                self.items = []
+                if let error = error {
+                    self.alert(title: K.Texts.problemOcurred, message: error.localizedDescription)
+                } else {
+                    if let documents = querySnapshot?.documents {
+                        for doc in documents {
+                            let result = Result {
+                                try doc.data(as: Order.self)
+                            }
+                            switch result {
+                            case .success(let order):
+                                self.folioLabel.text = order.folio
+                                self.clientLabel.text = order.client
+                                self.clientNameLabel.text = order.clientName
+                                self.ubicationLabel.text = order.location
+                                self.orderCompleteLabel.text = order.complete.description
+                                
+                                let timeRequest = order.dateRequest
+                                let timeProcessed = order.dateProcessed ?? 0.0
+                                let timeFinished = order.dateFinished ?? 0.0
+                                let timeDelivered = order.dateDelivered ?? 0.0
+                                
+                                let dateRequest = Date(timeIntervalSince1970: timeRequest)
+                                let dateProcessed = Date(timeIntervalSince1970: timeProcessed)
+                                let dateFinished = Date(timeIntervalSince1970: timeFinished)
+                                let dateDelivered = Date(timeIntervalSince1970: timeDelivered)
+                                
+                                let dateFormatterGet = DateFormatter()
+                                dateFormatterGet.timeZone = TimeZone.current
+                                dateFormatterGet.locale = NSLocale.current
+                                dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.timeZone = TimeZone.current
+                                dateFormatter.locale = NSLocale.current
+                                dateFormatter.dateFormat = "h:mm a"
+                                dateFormatter.amSymbol = "AM"
+                                dateFormatter.pmSymbol = "PM"
+                                
+                                self.dateLabel.text = "Fecha del pedido: \(dateFormatterGet.string(from: dateRequest))"
+                                self.dateRequestLabel.text = "\(dateFormatter.string(from: dateRequest))"
+                                if timeProcessed != 0.0 {
+                                    self.dateProcessedLabel.text = "\(dateFormatter.string(from: dateProcessed))"
+                                } else {
+                                    self.dateProcessedLabel.text = ""
+                                }
+                                if timeFinished != 0.0 {
+                                    self.dateFinishedLabel.text = "\(dateFormatter.string(from: dateFinished))"
+                                } else {
+                                    self.dateFinishedLabel.text = ""
+                                }
+                                if timeDelivered != 0.0 {
+                                    self.dateDeliveredLabel.text = "\(dateFormatter.string(from: dateDelivered))"
+                                } else {
+                                    self.dateDeliveredLabel.text = ""
+                                }
+                                
+                                self.statusLabel.text = order.status
+                                self.totalLabel.text = "Total: $\(String(format: "%.2f", ceil((order.totalPrice)*100)/100))"
+                                self.items = Array(order.itemList)
+                                
+                                self.setMenuMore(order)
+                                
+                            case .failure(let error):
+                                print("Error decoding food: \(error)")
+                            }
                         }
-                        switch result {
-                        case .success(let order):
-                            self.totalLabel.text = "\(order.totalPrice)"
-                        case .failure(let error):
-                            print("Error decoding food: \(error)")
+                        
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
                         }
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
                     }
                 }
+            }
+    }
+    
+    func setMenuMore(_ order: Order) {
+        var title = "Cambiar estado a En proceso"
+        var image = UIImage(named: "kitchen")
+        
+        if order.status == "Pedido" {
+            title = "Cambiar estado a En proceso"
+            image = UIImage(named: "kitchen")
+        } else if order.status == "En proceso" {
+            title = "Cambiar estado a Listo"
+            image = UIImage(named: "check")
+        } else if order.status == "Listo" {
+            title = "Cambiar estado a Entregado"
+            image = UIImage(named: "delivered")
+        }
+        
+        let changeStatus = UIAction(title: title,
+                                    image: image,
+                                    identifier: nil
+        ) { _ in
+            if order.status == "Pedido" {
+                self.changeStateToInProcess(order, "En proceso", Date().timeIntervalSince1970)
+            } else if order.status == "En proceso" {
+                self.getUserToken(order.client) { token in
+                    let sender = PushNotificationSender()
+                    sender.sendPushNotification(to: token, title: "¡Tu pedido está listo!", body: "Gracias por tu compra")
+                    self.changeStateToFinished(order, "Listo", Date().timeIntervalSince1970)
+                }
+            } else if order.status == "Listo" {
+                self.changeStateToDelivered(order, "Entregado", Date().timeIntervalSince1970)
+            }
+        }
+        
+        let printOrder = UIAction(title: "Imprimir",
+                                  image: UIImage(named: "print"),
+                                  identifier: nil
+        ) { _ in
+            print("Edit Image Action")
+        }
+        
+        
+        let origImage = UIImage(named: "delete")
+        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        
+        let removeAction = UIAction(title: "Cancelar pedido",
+                                    image: tintedImage,
+                                    identifier: nil,
+                                    discoverabilityTitle: nil,
+                                    attributes: .destructive,
+                                    handler: { _ in
+            print("Remove Action")
+        })
+        
+        var menu = UIMenu(title: "", options: .displayInline, children: [changeStatus , printOrder , removeAction])
+        if order.status == "Entregado" {
+            menu = UIMenu(title: "", options: .displayInline, children: [printOrder])
+        }
+        
+        moreButton.menu = menu
+        moreButton.showsMenuAsPrimaryAction = true
+    }
+    
+    func getUserToken(_ userId: String, completion: @escaping (String) -> Void) {
+        ProgressHUD.show()
+        db.collection(K.Firebase.userCollection)
+            .whereField(K.Firebase.phoneNumberField, isEqualTo: userId)
+            .getDocuments { querySnapshot, error in
+                ProgressHUD.dismiss()
+                if let error = error {
+                    self.alert(title: K.Texts.problemOcurred, message: error.localizedDescription)
+                } else {
+                    if let documents = querySnapshot?.documents {
+                        if documents.count != 0 {
+                            for doc in documents {
+                                let data = doc.data()
+                                if let token = data[K.Firebase.fcmToken] as? String {
+                                    completion(token)
+                                }
+                            }
+                        } else {
+                            self.alert(title: "¡Ha ocurrido un problema!", message: "No hay ningún usuario registrado con este número")
+                        }
+                    }
+                }
+            }
+    }
+    
+    func changeStateToInProcess(_ order: Order, _ status: String, _ date: Double) {
+        ProgressHUD.show()
+        self.db.collection(K.Firebase.ordersCollection).document(order.folio).updateData([
+            K.Firebase.status: status,
+            K.Firebase.dateProcessed: date
+        ]) { err in
+            ProgressHUD.dismiss()
+            if let err = err {
+                self.alert(title: K.Texts.problemOcurred, message: err.localizedDescription)
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
+    
+    func changeStateToFinished(_ order: Order, _ status: String, _ date: Double) {
+        ProgressHUD.show()
+        self.db.collection(K.Firebase.ordersCollection).document(order.folio).updateData([
+            K.Firebase.status: status,
+            K.Firebase.dateFinished: date
+        ]) { err in
+            ProgressHUD.dismiss()
+            if let err = err {
+                self.alert(title: K.Texts.problemOcurred, message: err.localizedDescription)
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
+    
+    func changeStateToDelivered(_ order: Order, _ status: String, _ date: Double) {
+        ProgressHUD.show()
+        self.db.collection(K.Firebase.ordersCollection).document(order.folio).updateData([
+            K.Firebase.status: status,
+            K.Firebase.dateDelivered: date,
+            K.Firebase.complete: true
+        ]) { err in
+            ProgressHUD.dismiss()
+            if let err = err {
+                self.alert(title: K.Texts.problemOcurred, message: err.localizedDescription)
+            } else {
+                print("Document successfully updated")
             }
         }
     }
@@ -122,6 +307,9 @@ class OrderDetailsViewController: UIViewController {
     }
     
 }
+
+
+// MARK: - UITableViewDelagete && DataSource
 
 extension OrderDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     

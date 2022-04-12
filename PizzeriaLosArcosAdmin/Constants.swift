@@ -148,6 +148,7 @@ struct K {
         static let folio = "folio"
         static let client = "client"
         static let state = "status"
+        static let complete = "complete"
         static let dateProcessed = "dateProcessed"
         static let dateFinished = "dateFinished"
         static let dateDelivered = "dateDelivered"

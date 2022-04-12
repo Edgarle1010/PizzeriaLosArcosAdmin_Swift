@@ -222,7 +222,8 @@ class InProcessViewController: UIViewController {
         ProgressHUD.show()
         self.db.collection(K.Firebase.ordersCollection).document(order.folio).updateData([
             K.Firebase.status: status,
-            K.Firebase.dateDelivered: date
+            K.Firebase.dateDelivered: date,
+            K.Firebase.complete: true
         ]) { err in
             ProgressHUD.dismiss()
             if let err = err {
@@ -264,7 +265,7 @@ extension InProcessViewController: UITableViewDelegate, UITableViewDataSource {
         let currOrder = ordersList[indexPath.row]
         
         cell.folioLabel.text = currOrder.folio
-        cell.priceLabel.text = "$\(currOrder.totalPrice)"
+        cell.priceLabel.text = "$\(String(format: "%.2f", ceil(currOrder.totalPrice*100)/100))"
         cell.clientNameLabel.text = currOrder.clientName
         cell.clientPhoneLabel.text = currOrder.client
         cell.statusLabel.text = currOrder.status

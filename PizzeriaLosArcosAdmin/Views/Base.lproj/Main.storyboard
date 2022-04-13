@@ -653,11 +653,43 @@
                         <outlet property="totalLabel" destination="T2t-40-Mse" id="fce-tf-4Tg"/>
                         <outlet property="totalView" destination="77s-Tg-iqV" id="m1U-SV-HjX"/>
                         <outlet property="ubicationLabel" destination="cme-fc-0gN" id="tre-Yv-XwS"/>
+                        <segue destination="Jv8-V9-oQH" kind="popoverPresentation" identifier="OrderDetailsToUbicationMap" popoverAnchorView="cme-fc-0gN" id="RNs-9v-bIq">
+                            <popoverArrowDirection key="popoverArrowDirection" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6PB-lT-ER3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3406.5326633165828" y="100.71942446043167"/>
+        </scene>
+        <!--Ubication Map View Controller-->
+        <scene sceneID="YgH-Tt-laT">
+            <objects>
+                <viewController id="Jv8-V9-oQH" customClass="UbicationMapViewController" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b6F-aa-wes">
+                        <rect key="frame" x="0.0" y="0.0" width="388" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Fuc-kC-nN7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SJx-mK-q0u"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SJx-mK-q0u" firstAttribute="trailing" secondItem="Fuc-kC-nN7" secondAttribute="trailing" id="7XO-Ml-AFM"/>
+                            <constraint firstItem="Fuc-kC-nN7" firstAttribute="top" secondItem="SJx-mK-q0u" secondAttribute="top" id="Dgu-a2-8hn"/>
+                            <constraint firstItem="SJx-mK-q0u" firstAttribute="bottom" secondItem="Fuc-kC-nN7" secondAttribute="bottom" id="KXu-jV-3K3"/>
+                            <constraint firstItem="Fuc-kC-nN7" firstAttribute="leading" secondItem="SJx-mK-q0u" secondAttribute="leading" id="pge-p3-gHc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Fuc-kC-nN7" id="Khy-rg-MCI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7tu-rK-6mI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3407" y="-895"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Eaw-V3-MBw">

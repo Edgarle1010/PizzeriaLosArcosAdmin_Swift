@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		90C79C5EFF63763940B0CE4A /* Pods_PizzeriaLosArcosAdmin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047FFBEF166240A3335CFBD1 /* Pods_PizzeriaLosArcosAdmin.framework */; };
+		B3CF3418280691AA00A6E3DE /* UbicationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CF3417280691AA00A6E3DE /* UbicationMapViewController.swift */; };
 		B3D03D8D27FD4E5F00760593 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D03D8C27FD4E5F00760593 /* PushNotificationManager.swift */; };
 		B3D03D8F27FD506800760593 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D03D8E27FD506800760593 /* PushNotificationSender.swift */; };
 		B3D03D9127FD50F000760593 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D03D9027FD50F000760593 /* Notification.swift */; };
@@ -38,6 +39,7 @@
 		047FFBEF166240A3335CFBD1 /* Pods_PizzeriaLosArcosAdmin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PizzeriaLosArcosAdmin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5499B2FD8EF8F5C9E954497F /* Pods-PizzeriaLosArcosAdmin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzeriaLosArcosAdmin.debug.xcconfig"; path = "Target Support Files/Pods-PizzeriaLosArcosAdmin/Pods-PizzeriaLosArcosAdmin.debug.xcconfig"; sourceTree = "<group>"; };
 		559219C63499CD2EB053AF84 /* Pods-PizzeriaLosArcosAdmin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzeriaLosArcosAdmin.release.xcconfig"; path = "Target Support Files/Pods-PizzeriaLosArcosAdmin/Pods-PizzeriaLosArcosAdmin.release.xcconfig"; sourceTree = "<group>"; };
+		B3CF3417280691AA00A6E3DE /* UbicationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbicationMapViewController.swift; sourceTree = "<group>"; };
 		B3D03D8B27FD4DC700760593 /* PizzeriaLosArcosAdminDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PizzeriaLosArcosAdminDebug.entitlements; sourceTree = "<group>"; };
 		B3D03D8C27FD4E5F00760593 /* PushNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		B3D03D8E27FD506800760593 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
@@ -151,9 +153,9 @@
 		B3F905C427F2CEFE00E647B9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B3F905B527F2CD3800E647B9 /* Main.storyboard */,
 				B3FB338827FFF1DB006199DA /* ItemTableViewCell.swift */,
 				B3FB338727FFF1DB006199DA /* ItemTableViewCell.xib */,
-				B3F905B527F2CD3800E647B9 /* Main.storyboard */,
 				B3E6FFE227F40A9E006AF6AE /* OrderTableViewCell.swift */,
 				B3E6FFE327F40A9E006AF6AE /* OrderTableViewCell.xib */,
 			);
@@ -167,6 +169,7 @@
 				B3E6FFDC27F401C2006AF6AE /* TabBarController.swift */,
 				B3E6FFE027F40407006AF6AE /* InProcessViewController.swift */,
 				B3FB338527FFD5B3006199DA /* OrderDetailsViewController.swift */,
+				B3CF3417280691AA00A6E3DE /* UbicationMapViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				B3F905CB27F2D4AB00E647B9 /* Constants.swift in Sources */,
 				B3D03D9127FD50F000760593 /* Notification.swift in Sources */,
 				B3E6FFE727F41263006AF6AE /* Order.swift in Sources */,
+				B3CF3418280691AA00A6E3DE /* UbicationMapViewController.swift in Sources */,
 				B3F905B427F2CD3800E647B9 /* LoginViewController.swift in Sources */,
 				B3F905B027F2CD3800E647B9 /* AppDelegate.swift in Sources */,
 				B3E6FFDD27F401C2006AF6AE /* TabBarController.swift in Sources */,

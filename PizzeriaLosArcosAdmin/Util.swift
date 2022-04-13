@@ -161,3 +161,21 @@ public extension UIView {
         }
     }
 }
+
+extension String {
+    func before(first delimiter: Character) -> String {
+        if let index = firstIndex(of: delimiter) {
+            let before = prefix(upTo: index)
+            return String(before)
+        }
+        return ""
+    }
+    
+    func after(first delimiter: Character) -> String {
+        if let index = firstIndex(of: delimiter) {
+            let after = suffix(from: index).dropFirst()
+            return String(after)
+        }
+        return ""
+    }
+}

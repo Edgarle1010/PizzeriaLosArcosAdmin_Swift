@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import ProgressHUD
+import MapKit
 
 class OrderDetailsViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
@@ -41,6 +42,10 @@ class OrderDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(OrderDetailsViewController.tapFunction))
+        ubicationLabel.isUserInteractionEnabled = true
+        ubicationLabel.addGestureRecognizer(tap)
+        
         loadViews()
         
         tableView.register(UINib(nibName: K.Collections.itemTableViewCell, bundle: nil), forCellReuseIdentifier: K.Collections.itemCell)
@@ -59,6 +64,13 @@ class OrderDetailsViewController: UIViewController {
     
     @IBAction func backPressed(_ sender: UIButton) {
         dismiss(animated: true)
+    }
+    
+    @IBAction func tapFunction(sender: UITapGestureRecognizer) {
+        guard let label = sender.view as? UILabel else { return }
+        if label.text != K.Texts.locationNotProveided {
+            self.performSegue(withIdentifier: K.Segues.orderDetailsToUbicationMap, sender: self)
+        }
     }
     
     func loadViews() {
@@ -304,6 +316,21 @@ class OrderDetailsViewController: UIViewController {
         alert.addAction(UIAlertAction(title: K.Texts.ok, style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         return
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segues.orderDetailsToUbicationMap {
+            let destinationVC = segue.destination as! UbicationMapViewController
+            //            let latitude = Double(order!.location.before(first: ","))
+            //            let longitude = Double(order!.location.after(first: ",").trimmingCharacters(in: .whitespaces))
+            //            print(latitude)
+            //            print(longitude)
+            if let latitude = Double(order!.location.before(first: ",")),
+               let longitude = Double(order!.location.after(first: ",").trimmingCharacters(in: .whitespaces)) {
+                destinationVC.latitude = latitude
+                destinationVC.longitude = longitude
+            }
+        }
     }
     
 }

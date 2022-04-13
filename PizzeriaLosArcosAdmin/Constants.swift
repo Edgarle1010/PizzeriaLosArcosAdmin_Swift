@@ -40,6 +40,8 @@ struct K {
         static let goBack = "Volver"
         static let ok = "OK"
         
+        static let locationNotProveided = "Ubicación no proporcionada"
+        
         static let FOOD_TYPE = "FOOD_TYPE"
         static let FOOD_TITLE = "FOOD_TITLE"
         static let FOOD_ITEM = "FOOD_ITEM"
@@ -186,6 +188,7 @@ struct K {
         static let userInformationToChangePassword = "UserInformationToChangePassword"
         
         static let inProccessToOrderDetails = "InProccessToOrderDetails"
+        static let orderDetailsToUbicationMap = "OrderDetailsToUbicationMap"
     }
     
     struct ViewControllers {

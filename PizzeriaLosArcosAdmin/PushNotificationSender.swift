@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestoreSwift
+import ProgressHUD
+
 class PushNotificationSender {
-    func sendPushNotification(to token: String, title: String, body: String) {
+    func sendPushNotification(to token: String, title: String, body: String, folio: String, imagenURL: String?, options: String?) {
         let urlString = "https://fcm.googleapis.com/fcm/send"
         let url = NSURL(string: urlString)!
         let paramString: [String : Any] = ["to" : token,
@@ -15,6 +19,8 @@ class PushNotificationSender {
                                            "data" : ["user" : "test_id"]
         ]
         let request = NSMutableURLRequest(url: url as URL)
+        let db = Firestore.firestore()
+        
         request.httpMethod = "POST"
         request.httpBody = try? JSONSerialization.data(withJSONObject:paramString, options: [.prettyPrinted])
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -24,6 +30,17 @@ class PushNotificationSender {
                 if let jsonData = data {
                     if let jsonDataDict  = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.allowFragments) as? [String: AnyObject] {
                         NSLog("Received data:\n\(jsonDataDict))")
+                        
+                        let notification = Notification(folio: folio, imageURL: imagenURL, title: title, description: body, options: options, userToken: token, viewed: false)
+                        
+                        ProgressHUD.show()
+                        do {
+                            ProgressHUD.dismiss()
+                            let _ = try db.collection(K.Firebase.notificationsCollection).document().setData(from: notification)
+                        }
+                        catch {
+                            print(error)
+                        }
                     }
                 }
             } catch let err as NSError {

@@ -203,7 +203,7 @@ class OrderDetailsViewController: UIViewController {
             } else if order.status == "En proceso" {
                 self.getUserToken(order.client) { token in
                     let sender = PushNotificationSender()
-                    sender.sendPushNotification(to: token, title: "¡Tu pedido está listo!", body: "Gracias por tu compra")
+                    sender.sendPushNotification(to: token, title: "¡Tu pedido está listo!", body: "Gracias por tu compra", folio: order.folio, imagenURL: nil, options: nil)
                     self.changeStateToFinished(order, "Listo", Date().timeIntervalSince1970)
                 }
             } else if order.status == "Listo" {

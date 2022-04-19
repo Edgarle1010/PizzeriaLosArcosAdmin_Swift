@@ -103,6 +103,35 @@
             </objects>
             <point key="canvasLocation" x="848" y="101"/>
         </scene>
+        <!--Service Message Table View Controller-->
+        <scene sceneID="tZU-dJ-gVh">
+            <objects>
+                <tableViewController id="D1z-BW-1ta" customClass="ServiceMessageTableViewController" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="AsG-HX-5hJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="413"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="cWO-HO-Wm1">
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cWO-HO-Wm1" id="e9f-7w-VdZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="D1z-BW-1ta" id="QdV-VO-rm2"/>
+                            <outlet property="delegate" destination="D1z-BW-1ta" id="1v5-rE-9AA"/>
+                        </connections>
+                    </tableView>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="400"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZRa-dC-rHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2490" y="-896"/>
+        </scene>
         <!--Recepción-->
         <scene sceneID="mae-sB-sDY">
             <objects>
@@ -280,6 +309,9 @@
                         <outlet property="waitTimeLabel" destination="i51-5U-Y9w" id="fpQ-IF-CfR"/>
                         <outlet property="waitTimeSlider" destination="ZQB-OQ-Xtu" id="UdS-Ih-TI8"/>
                         <segue destination="p2W-CL-g8H" kind="showDetail" identifier="InProccessToOrderDetails" id="cl7-Qd-qct"/>
+                        <segue destination="D1z-BW-1ta" kind="popoverPresentation" identifier="InProccessToServiceMessage" popoverAnchorView="afd-G1-Hho" id="Qiz-Lr-mdw">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="stb-W1-roR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

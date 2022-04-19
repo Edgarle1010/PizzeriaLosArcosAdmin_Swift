@@ -145,6 +145,8 @@ struct K {
         static let current = "current"
         static let message = "message"
         static let status = "status"
+        static let options = "options"
+        static let posts = "posts"
         
         static let ordersCollection = "orders"
         static let folio = "folio"
@@ -189,6 +191,7 @@ struct K {
         
         static let inProccessToOrderDetails = "InProccessToOrderDetails"
         static let orderDetailsToUbicationMap = "OrderDetailsToUbicationMap"
+        static let InProccessToServiceMessage = "InProccessToServiceMessage"
     }
     
     struct ViewControllers {

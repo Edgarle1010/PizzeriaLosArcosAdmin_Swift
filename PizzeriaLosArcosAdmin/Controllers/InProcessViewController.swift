@@ -143,13 +143,19 @@ class InProcessViewController: UIViewController {
     }
     
     @IBAction func stateSwitchServicePressed(_ sender: UISwitch) {
-        setStateService(sender.isOn)
+        if sender.isOn {
+            setStateService(true, "Servicio activo.")
+        } else {
+            self.performSegue(withIdentifier: K.Segues.InProccessToServiceMessage, sender: self)
+        }
+       
     }
     
-    func setStateService(_ state: Bool) {
+    func setStateService(_ state: Bool, _ message: String) {
         ProgressHUD.show()
         self.db.collection(K.Firebase.messageCollection).document(K.Firebase.current).updateData([
             K.Firebase.status: state,
+            K.Firebase.message: message
         ]) { err in
             ProgressHUD.dismiss()
             if let err = err {
@@ -246,8 +252,57 @@ class InProcessViewController: UIViewController {
             let destinationVC = segue.destination as! OrderDetailsViewController
             destinationVC.order = order
         }
+        
+        if segue.identifier == K.Segues.InProccessToServiceMessage {
+            if let destionationVC = segue.destination as? ServiceMessageTableViewController {
+                let controller = destionationVC.popoverPresentationController
+                controller?.delegate = self
+                destionationVC.delegate = self
+                destionationVC.modalPresentationStyle = .popover
+            }
+            
+        }
     }
     
+}
+
+
+//MARK: - PopOverPresentation extension
+
+extension InProcessViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) {
+        setAlphaOfBackgroundViews(alpha: 1)
+        onlineServiceSwitch.setOn(true, animated: true)
+    }
+    
+    func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController) {
+        setAlphaOfBackgroundViews(alpha: 0.7)
+    }
+    
+    func setAlphaOfBackgroundViews(alpha: CGFloat) {
+        UIView.animate(withDuration: 0.2) {
+            self.view.alpha = alpha;
+            self.navigationController?.navigationBar.alpha = alpha;
+        }
+    }
+}
+
+extension InProcessViewController: PassDataDelegate {
+    func passData(_ data: String) {
+        setStateService(false, data)
+        UIView.animate(withDuration: 0.2) {
+            self.view.alpha = 1;
+            self.navigationController?.navigationBar.alpha = 1;
+        }
+    }
+}
+
+protocol PassDataDelegate {
+    func passData(_ data: String)
 }
 
 
@@ -318,7 +373,7 @@ extension InProcessViewController: UITableViewDelegate, UITableViewDataSource {
                     } else if currOrder.status == "En proceso" {
                         self.getUserToken(currOrder.client) { token in
                             let sender = PushNotificationSender()
-                            sender.sendPushNotification(to: token, title: "¡Tu pedido está listo!", body: "Gracias por tu compra")
+                            sender.sendPushNotification(to: token, title: "¡Tu pedido está listo!", body: "Gracias por tu compra", folio: currOrder.folio, imagenURL: nil, options: nil)
                             self.changeStateToFinished(currOrder, "Listo", Date().timeIntervalSince1970)
                         }
                     } else if currOrder.status == "Listo" {

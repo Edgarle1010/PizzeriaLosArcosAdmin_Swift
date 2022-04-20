@@ -33,6 +33,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             switch currentVC {
             case K.ViewControllers.inProcessViewController:
                 self.navigationItem.title = "Recepción"
+            case K.ViewControllers.splitViewController:
+                self.navigationItem.title = "Clientes"
             default:
                 break;
             }

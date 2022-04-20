@@ -199,6 +199,9 @@ struct K {
         static let menuViewController = "MenuViewController"
         static let shoppingCarViewController = "ShoppingCarViewController"
         static let moreViewController = "MoreViewController"
+        static let clientsTableViewController = "ClientsTableViewController"
+        static let clientDetailsViewController = "ClientDetailsViewController"
+        static let splitViewController = "SplitViewController"
     }
     
     struct Titles {
@@ -219,5 +222,7 @@ struct K {
         static let orderCell = "orderCell"
         static let notificationTableViewCell = "NotificationsTableViewCell"
         static let notificationCell = "notificationCell"
+        
+        static let customerCell = "customerCell"
     }
 }

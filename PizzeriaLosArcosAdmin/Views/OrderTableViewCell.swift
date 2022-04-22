@@ -14,14 +14,11 @@ class OrderTableViewCell: UITableViewCell {
     @IBOutlet weak var clientNameLabel: UILabel!
     @IBOutlet weak var clientPhoneLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var staticEstimatedDelivery: UILabel!
     @IBOutlet weak var timeEstimatedDelivery: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        viewCell.dropShadow()
-        viewCell.layer.cornerRadius = 12
-        viewCell.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

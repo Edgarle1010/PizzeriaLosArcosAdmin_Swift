@@ -16,24 +16,28 @@ public class Order: Codable {
     var complete: Bool
     var status: String
     var dateRequest: Double
+    var dateEstimatedDelivery: Double
     var dateProcessed: Double?
     var dateFinished: Double?
     var dateDelivered: Double?
+    var dateCanceled: Double?
     var location: String
     var totalPrice: Double
     var items: Int
     var itemList = List<Item>()
     
-    init(folio: String, client: String, clientName: String, complete: Bool, status: String, dateRequest: Double, dateProcessed: Double?, dateFinished: Double?, dateDelivered: Double?, location: String, totalPrice: Double, items: Int, itemList: List<Item>) {
+    init(folio: String, client: String, clientName: String, complete: Bool, status: String, dateRequest: Double, dateEstimatedDelivery: Double, dateProcessed: Double?, dateFinished: Double?, dateDelivered: Double?, dateCanceled: Double?, location: String, totalPrice: Double, items: Int, itemList: List<Item>) {
         self.folio = folio
         self.client = client
         self.clientName = clientName
         self.complete = complete
         self.status = status
         self.dateRequest = dateRequest
+        self.dateEstimatedDelivery = dateEstimatedDelivery
         self.dateProcessed = dateProcessed
         self.dateFinished = dateFinished
         self.dateDelivered = dateDelivered
+        self.dateCanceled = dateCanceled
         self.location = location
         self.totalPrice = totalPrice
         self.items = items
@@ -47,9 +51,11 @@ public class Order: Codable {
         case complete
         case status
         case dateRequest
+        case dateEstimatedDelivery
         case dateProcessed
         case dateFinished
         case dateDelivered
+        case dateCanceled
         case location
         case totalPrice
         case items
@@ -65,9 +71,11 @@ public class Order: Codable {
         complete = try values.decodeIfPresent(Bool.self, forKey: .complete)!
         status = try values.decodeIfPresent(String.self, forKey: .status)!
         dateRequest = try values.decodeIfPresent(Double.self, forKey: .dateRequest)!
+        dateEstimatedDelivery = try values.decodeIfPresent(Double.self, forKey: .dateEstimatedDelivery)!
         dateProcessed = try values.decodeIfPresent(Double.self, forKey: .dateProcessed)
         dateFinished = try values.decodeIfPresent(Double.self, forKey: .dateFinished)
         dateDelivered = try values.decodeIfPresent(Double.self, forKey: .dateDelivered)
+        dateCanceled = try values.decodeIfPresent(Double.self, forKey: .dateCanceled)
         location = try values.decodeIfPresent(String.self, forKey: .location)!
         totalPrice = try values.decodeIfPresent(Double.self, forKey: .totalPrice)!
         items = try values.decodeIfPresent(Int.self, forKey: .items)!
@@ -83,9 +91,11 @@ public class Order: Codable {
         try container.encodeIfPresent(complete, forKey: .complete)
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(dateRequest, forKey: .dateRequest)
+        try container.encodeIfPresent(dateEstimatedDelivery, forKey: .dateEstimatedDelivery)
         try container.encodeIfPresent(dateProcessed, forKey: .dateProcessed)
         try container.encodeIfPresent(dateFinished, forKey: .dateFinished)
         try container.encodeIfPresent(dateDelivered, forKey: .dateDelivered)
+        try container.encodeIfPresent(dateCanceled, forKey: .dateCanceled)
         try container.encodeIfPresent(location, forKey: .location)
         try container.encodeIfPresent(totalPrice, forKey: .totalPrice)
         try container.encodeIfPresent(items, forKey: .items)

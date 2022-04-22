@@ -325,8 +325,8 @@ extension InProcessViewController: UITableViewDelegate, UITableViewDataSource {
         cell.clientPhoneLabel.text = currOrder.client
         cell.statusLabel.text = currOrder.status
         
-        let timeRequest = currOrder.dateRequest
-        let dateRequest = Date(timeIntervalSince1970: timeRequest)
+        let timeEstimatedDelivery = currOrder.dateEstimatedDelivery
+        let dateEstimatedDelivery = Date(timeIntervalSince1970: timeEstimatedDelivery)
         
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
@@ -335,7 +335,7 @@ extension InProcessViewController: UITableViewDelegate, UITableViewDataSource {
         dateFormatter.amSymbol = "AM"
         dateFormatter.pmSymbol = "PM"
         
-        cell.timeEstimatedDelivery.text = "\(dateFormatter.string(from: dateRequest.addingTimeInterval(30 * 60)))"
+        cell.timeEstimatedDelivery.text = "\(dateFormatter.string(from: dateEstimatedDelivery))"
         
         return cell
     }

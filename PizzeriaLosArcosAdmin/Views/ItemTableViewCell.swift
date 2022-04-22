@@ -20,10 +20,6 @@ class ItemTableViewCell: SwipeTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        viewCell.dropShadow()
-        viewCell.layer.cornerRadius = 12
-        viewCell.layer.masksToBounds = true
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

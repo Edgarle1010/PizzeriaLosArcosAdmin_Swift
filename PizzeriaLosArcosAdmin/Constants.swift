@@ -122,6 +122,9 @@ struct K {
         static let back = "back"
         static let print = "print"
         static let more = "more"
+        static let historyIcon = "history_icon"
+        static let faul = "faul"
+        static let ban = "ban"
     }
     
     struct Firebase {
@@ -192,6 +195,7 @@ struct K {
         static let inProccessToOrderDetails = "InProccessToOrderDetails"
         static let orderDetailsToUbicationMap = "OrderDetailsToUbicationMap"
         static let InProccessToServiceMessage = "InProccessToServiceMessage"
+        static let clientDetailsToOrdersHistory = "ClientDetailsToOrdersHistory"
     }
     
     struct ViewControllers {
@@ -202,6 +206,7 @@ struct K {
         static let clientsTableViewController = "ClientsTableViewController"
         static let clientDetailsViewController = "ClientDetailsViewController"
         static let splitViewController = "SplitViewController"
+        static let ordersHistoryViewController = "OrdersHistoryViewController"
     }
     
     struct Titles {

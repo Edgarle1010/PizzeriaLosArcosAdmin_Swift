@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="516" height="122"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZd-Zx-RdB">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZd-Zx-RdB" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target">
                         <rect key="frame" x="15" y="7.5" width="486" height="107"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SyP-hj-SIE">
@@ -104,6 +104,7 @@
                                                 <constraints>
                                                     <constraint firstItem="17H-8k-Ip3" firstAttribute="leading" secondItem="NbC-4h-cIJ" secondAttribute="leading" id="IJ2-0T-REQ"/>
                                                     <constraint firstItem="Lum-mI-beQ" firstAttribute="leading" secondItem="17H-8k-Ip3" secondAttribute="trailing" constant="10" id="Y6c-FI-JkB"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Lum-mI-beQ" secondAttribute="trailing" constant="10" id="doN-nt-YBz"/>
                                                     <constraint firstItem="Lum-mI-beQ" firstAttribute="centerY" secondItem="NbC-4h-cIJ" secondAttribute="centerY" id="eeu-38-eB2"/>
                                                     <constraint firstItem="17H-8k-Ip3" firstAttribute="centerY" secondItem="NbC-4h-cIJ" secondAttribute="centerY" id="gAd-Mv-ANN"/>
                                                 </constraints>
@@ -116,7 +117,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" name="thirdColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="SyP-hj-SIE" secondAttribute="bottom" constant="5" id="EiX-8Y-J2Z"/>
                             <constraint firstItem="SyP-hj-SIE" firstAttribute="top" secondItem="JZd-Zx-RdB" secondAttribute="top" constant="5" id="Jcl-UL-RkO"/>
@@ -139,6 +140,7 @@
                 <outlet property="clientPhoneLabel" destination="QSg-dk-I7c" id="dbz-uL-Pap"/>
                 <outlet property="folioLabel" destination="OqI-Dy-d8W" id="cyE-eY-02M"/>
                 <outlet property="priceLabel" destination="dyC-qD-yfu" id="cq6-WE-2ke"/>
+                <outlet property="staticEstimatedDelivery" destination="17H-8k-Ip3" id="Msn-qe-JGr"/>
                 <outlet property="statusLabel" destination="dc1-p2-0cT" id="Zaf-xh-sQL"/>
                 <outlet property="timeEstimatedDelivery" destination="Lum-mI-beQ" id="PwV-ey-2fY"/>
                 <outlet property="viewCell" destination="JZd-Zx-RdB" id="hh5-mN-EoS"/>
@@ -149,9 +151,6 @@
     <resources>
         <namedColor name="primaryColor">
             <color red="0.76499998569488525" green="0.41600000858306885" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="thirdColor">
-            <color red="0.9179999828338623" green="0.86299997568130493" blue="0.65100002288818359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

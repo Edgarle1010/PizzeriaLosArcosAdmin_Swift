@@ -58,6 +58,8 @@ class ClientDetailsViewController: UIViewController {
         streaksLabel.text = "\(user.streaks)"
         
         loadExtraInformation(user)
+        
+        setMenuMore(user)
     }
     
     func loadUserData(_ user: User) {
@@ -100,7 +102,9 @@ class ClientDetailsViewController: UIViewController {
                             }
                             switch result {
                             case .success(let order):
-                                self.orderList.append(order)
+                                if order.complete {
+                                    self.orderList.append(order)
+                                }
                             case .failure(let error):
                                 print("Error decoding food: \(error)")
                             }
@@ -124,11 +128,52 @@ class ClientDetailsViewController: UIViewController {
             }
     }
     
+    func setMenuMore(_ user: User) {
+        
+        let ordersHistory = UIAction(title: "Historial de pedidos",
+                                    image: UIImage(named: K.Images.historyIcon),
+                                    identifier: nil
+        ) { _ in
+            self.performSegue(withIdentifier: K.Segues.clientDetailsToOrdersHistory, sender: self)
+        }
+        
+        let addMissing = UIAction(title: "Añadir falta",
+                                  image: UIImage(named: K.Images.faul),
+                                  identifier: nil
+        ) { _ in
+            
+        }
+        
+        
+        let origImage = UIImage(named: "ban")
+        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        
+        let blockUser = UIAction(title: "Bloquear cliente",
+                                    image: tintedImage,
+                                    identifier: nil,
+                                    discoverabilityTitle: nil,
+                                    attributes: .destructive,
+                                    handler: { _ in
+        })
+        
+        let menu = UIMenu(title: "", options: .displayInline, children: [ordersHistory , addMissing, blockUser])
+    
+        moreButton.menu = menu
+        moreButton.showsMenuAsPrimaryAction = true
+    }
+    
     func alert(title: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: K.Texts.ok, style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         return
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segues.clientDetailsToOrdersHistory {
+            let destinationVC = segue.destination as! OrdersHistoryViewController
+            destinationVC.user = user
+        }
     }
     
 }

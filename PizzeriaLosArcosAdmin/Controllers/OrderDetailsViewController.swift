@@ -83,18 +83,6 @@ class OrderDetailsViewController: UIViewController {
         let printButtonTintedImage = printButtonImage?.withRenderingMode(.alwaysTemplate)
         moreButton.setImage(printButtonTintedImage, for: .normal)
         moreButton.tintColor = UIColor.init(named: K.BrandColors.primaryColor)
-        
-        totalView.dropShadow()
-        totalView.layer.cornerRadius = 12
-        totalView.layer.masksToBounds = true;
-        
-        statusView.dropShadow()
-        statusView.layer.cornerRadius = 12
-        statusView.layer.masksToBounds = true;
-        
-        dateView.dropShadow()
-        dateView.layer.cornerRadius = 12
-        dateView.layer.masksToBounds = true;
     }
     
     func loadOrderDetails(_ order: Order) {
@@ -321,10 +309,6 @@ class OrderDetailsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segues.orderDetailsToUbicationMap {
             let destinationVC = segue.destination as! UbicationMapViewController
-            //            let latitude = Double(order!.location.before(first: ","))
-            //            let longitude = Double(order!.location.after(first: ",").trimmingCharacters(in: .whitespaces))
-            //            print(latitude)
-            //            print(longitude)
             if let latitude = Double(order!.location.before(first: ",")),
                let longitude = Double(order!.location.after(first: ",").trimmingCharacters(in: .whitespaces)) {
                 destinationVC.latitude = latitude

@@ -498,7 +498,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dXP-aQ-m4p">
                                                         <rect key="frame" x="10" y="10" width="317" height="297"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ba-A5-XqV" userLabel="statusView">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ba-A5-XqV" userLabel="statusView" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="317" height="29.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha del pedido: 17 de enero" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="j2K-4D-nuG">
@@ -509,7 +509,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" name="thirdColor"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="j2K-4D-nuG" firstAttribute="centerX" secondItem="0Ba-A5-XqV" secondAttribute="centerX" id="5Fx-A2-Wjw"/>
                                                                     <constraint firstItem="j2K-4D-nuG" firstAttribute="centerY" secondItem="0Ba-A5-XqV" secondAttribute="centerY" id="5ip-W5-j8S"/>
@@ -608,35 +608,33 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="42A-Ur-6DR">
                                                         <rect key="frame" x="0.0" y="0.0" width="317" height="44.5"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZK3-y8-3Ra" userLabel="statusView">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZK3-y8-3Ra" userLabel="statusView" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="143.5" height="44.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="En proceso" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Njc-mJ-hKT">
                                                                         <rect key="frame" x="26" y="12" width="92" height="20.5"/>
-                                                                        <color key="backgroundColor" name="thirdColor"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                                         <color key="textColor" name="primaryColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" name="thirdColor"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="Njc-mJ-hKT" firstAttribute="centerX" secondItem="ZK3-y8-3Ra" secondAttribute="centerX" id="Kha-UJ-eTf"/>
                                                                     <constraint firstItem="Njc-mJ-hKT" firstAttribute="centerY" secondItem="ZK3-y8-3Ra" secondAttribute="centerY" id="Vdg-Ko-kao"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77s-Tg-iqV" userLabel="totalView">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="77s-Tg-iqV" userLabel="totalView" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target">
                                                                 <rect key="frame" x="173.5" y="0.0" width="143.5" height="44.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: $0.0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="T2t-40-Mse">
                                                                         <rect key="frame" x="31" y="12" width="82" height="20.5"/>
-                                                                        <color key="backgroundColor" name="thirdColor"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                                                         <color key="textColor" name="primaryColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" name="thirdColor"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstItem="T2t-40-Mse" firstAttribute="centerX" secondItem="77s-Tg-iqV" secondAttribute="centerX" id="Dz4-tL-OAG"/>
                                                                     <constraint firstItem="T2t-40-Mse" firstAttribute="centerY" secondItem="77s-Tg-iqV" secondAttribute="centerY" id="pEA-Ff-aDa"/>
@@ -951,16 +949,16 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="YDn-KK-foJ">
-                                                                <rect key="frame" x="77" y="123" width="69" height="93"/>
+                                                                <rect key="frame" x="84" y="123" width="55" height="93"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Streaks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkR-YU-PaD">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="69" height="23"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faltas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkR-YU-PaD">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="55" height="23"/>
                                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vEd-Lu-1eR" userLabel="statusView" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target">
-                                                                        <rect key="frame" x="9.5" y="43" width="50" height="50"/>
+                                                                        <rect key="frame" x="2.5" y="43" width="50" height="50"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ZB0-wY-dLI">
                                                                                 <rect key="frame" x="20.5" y="15" width="9.5" height="20.5"/>
@@ -1022,11 +1020,70 @@
                         <outlet property="statusLabel" destination="JKu-R8-hty" id="CLL-PO-V3E"/>
                         <outlet property="streaksLabel" destination="ZB0-wY-dLI" id="cdK-dM-IgJ"/>
                         <outlet property="totalConsumedLabel" destination="Gda-56-aqI" id="vIq-MK-fJP"/>
+                        <segue destination="lQL-w4-k5p" kind="popoverPresentation" identifier="ClientDetailsToOrdersHistory" popoverAnchorView="mlI-U8-tsi" id="s4D-15-4MR">
+                            <popoverArrowDirection key="popoverArrowDirection" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYp-h3-ktF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3406.5326633165828" y="464.74820143884898"/>
+        </scene>
+        <!--Orders History View Controller-->
+        <scene sceneID="Vdc-X7-0sF">
+            <objects>
+                <viewController id="lQL-w4-k5p" customClass="OrdersHistoryViewController" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gpf-fF-l1F">
+                        <rect key="frame" x="0.0" y="0.0" width="388" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xsp-K5-HPT" userLabel="navigationView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Historial de pedidos de Edgar" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="MET-uX-JgA">
+                                        <rect key="frame" x="10" y="13.5" width="355" height="23"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="thirdColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="MET-uX-JgA" secondAttribute="trailing" constant="10" id="9Pd-dZ-siq"/>
+                                    <constraint firstItem="MET-uX-JgA" firstAttribute="centerY" secondItem="Xsp-K5-HPT" secondAttribute="centerY" id="Egb-rz-Dyr"/>
+                                    <constraint firstAttribute="height" constant="50" id="JCG-H1-qCI"/>
+                                    <constraint firstItem="MET-uX-JgA" firstAttribute="leading" secondItem="Xsp-K5-HPT" secondAttribute="leading" constant="10" id="w8h-3Q-OE3"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Cod-v5-Vce">
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="lQL-w4-k5p" id="1gP-M6-r6r"/>
+                                    <outlet property="delegate" destination="lQL-w4-k5p" id="C0h-Ra-PFo"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZwL-Zo-Rui"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZwL-Zo-Rui" firstAttribute="trailing" secondItem="Cod-v5-Vce" secondAttribute="trailing" id="0tm-ow-mdO"/>
+                            <constraint firstItem="Cod-v5-Vce" firstAttribute="leading" secondItem="ZwL-Zo-Rui" secondAttribute="leading" id="3Ki-z4-Fiu"/>
+                            <constraint firstItem="Xsp-K5-HPT" firstAttribute="top" secondItem="ZwL-Zo-Rui" secondAttribute="top" id="Vo7-96-KXT"/>
+                            <constraint firstItem="Xsp-K5-HPT" firstAttribute="trailing" secondItem="ZwL-Zo-Rui" secondAttribute="trailing" id="a6o-Cu-BlG"/>
+                            <constraint firstItem="Xsp-K5-HPT" firstAttribute="leading" secondItem="ZwL-Zo-Rui" secondAttribute="leading" id="dJR-SJ-Caj"/>
+                            <constraint firstItem="Cod-v5-Vce" firstAttribute="top" secondItem="Xsp-K5-HPT" secondAttribute="bottom" id="fSe-Ig-lfB"/>
+                            <constraint firstItem="ZwL-Zo-Rui" firstAttribute="bottom" secondItem="Cod-v5-Vce" secondAttribute="bottom" id="zwO-4O-Idn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Cod-v5-Vce" id="W1t-2h-lfL"/>
+                        <outlet property="titleLabel" destination="MET-uX-JgA" id="1y2-aM-ZAP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AnL-ig-TvG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4237.6884422110552" y="464.74820143884898"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="jjY-cj-f1x">

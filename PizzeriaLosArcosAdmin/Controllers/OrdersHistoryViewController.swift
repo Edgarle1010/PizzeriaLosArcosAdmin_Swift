@@ -18,6 +18,7 @@ class OrdersHistoryViewController: UIViewController {
     
     var user: User?
     var orderList: [Order] = []
+    var order: Order?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,6 @@ class OrdersHistoryViewController: UIViewController {
     func loadOrders(_ user: User) {
         tableView.register(UINib(nibName: K.Collections.orderTableViewCell, bundle: nil), forCellReuseIdentifier: K.Collections.orderCell)
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.allowsSelection = false
         
         ProgressHUD.show()
         db.collection(K.Firebase.ordersCollection)
@@ -72,6 +72,13 @@ class OrdersHistoryViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
         return
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segues.ordersHistoryToOrderDetails {
+            let destinationVC = segue.destination as! OrderDetailsViewController
+            destinationVC.order = order
+        }
+    }
 
 }
 
@@ -102,6 +109,12 @@ extension OrdersHistoryViewController: UITableViewDataSource, UITableViewDelegat
         cell.timeEstimatedDelivery.text = "\(dateFormatterGet.string(from: dateRequest))"
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        order = orderList[indexPath.row]
+        performSegue(withIdentifier: K.Segues.ordersHistoryToOrderDetails, sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     

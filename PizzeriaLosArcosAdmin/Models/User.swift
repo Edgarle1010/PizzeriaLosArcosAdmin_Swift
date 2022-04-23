@@ -13,7 +13,7 @@ public struct User: Codable {
     let lastName: String
     let email: String
     let phoneNumber: String
-    let streaks: Int
+    let streaks: [String]
     let isBaned: Bool
     let fcmToken: String?
     

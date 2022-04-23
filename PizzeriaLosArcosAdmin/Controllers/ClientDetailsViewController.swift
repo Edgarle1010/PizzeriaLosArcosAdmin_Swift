@@ -17,7 +17,7 @@ class ClientDetailsViewController: UIViewController {
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var streaksLabel: UILabel!
+    @IBOutlet weak var streaksButton: UIButton!
     @IBOutlet weak var ordersCompletedLabel: UILabel!
     @IBOutlet weak var ordersCanceled: UILabel!
     @IBOutlet weak var totalConsumedLabel: UILabel!
@@ -55,11 +55,13 @@ class ClientDetailsViewController: UIViewController {
         } else {
             statusLabel.text = "Suspendida"
         }
-        streaksLabel.text = "\(user.streaks)"
+        streaksButton.setTitle("\(user.streaks.count)", for: .normal)
         
         loadExtraInformation(user)
         
         setMenuMore(user)
+        
+        setFaulMenu(user)
     }
     
     func loadUserData(_ user: User) {
@@ -76,7 +78,10 @@ class ClientDetailsViewController: UIViewController {
                     switch result {
                     case .success(let user):
                         DispatchQueue.main.async {
-                            self.refreshUI(user!)
+                            guard let user = user else {
+                                return
+                            }
+                            self.refreshUI(user)
                         }
                     case .failure(let error):
                         print("Error decoding food: \(error)")
@@ -128,6 +133,42 @@ class ClientDetailsViewController: UIViewController {
             }
     }
     
+    func setFaul(_ user: User, _ reason: String) {
+        ProgressHUD.show()
+        self.db.collection(K.Firebase.userCollection).document(user.userId).updateData([
+            K.Firebase.streaks: FieldValue.arrayUnion(["\(reason),\(Date().timeIntervalSince1970)"])
+        ]) { err in
+            ProgressHUD.dismiss()
+            if let err = err {
+                self.alert(title: K.Texts.problemOcurred, message: err.localizedDescription)
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
+    
+    func setUserStatus(_ user: User) {
+        var status = false
+        
+        if user.isBaned {
+            status = false
+        } else {
+            status = true
+        }
+        
+        ProgressHUD.show()
+        self.db.collection(K.Firebase.userCollection).document(user.userId).updateData([
+            K.Firebase.isBaned: status
+        ]) { err in
+            ProgressHUD.dismiss()
+            if let err = err {
+                self.alert(title: K.Texts.problemOcurred, message: err.localizedDescription)
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
+    
     func setMenuMore(_ user: User) {
         
         let ordersHistory = UIAction(title: "Historial de pedidos",
@@ -141,25 +182,73 @@ class ClientDetailsViewController: UIViewController {
                                   image: UIImage(named: K.Images.faul),
                                   identifier: nil
         ) { _ in
+            let faulAlert = UIAlertController(title: "Agregar falta", message: nil, preferredStyle: .alert)
+
+            faulAlert.addTextField { (textField) in
+                textField.placeholder = "Motivo de la falta"
+            }
             
+            faulAlert.addAction(UIAlertAction(title: K.Texts.ok, style: .default, handler: { action in
+                if let reason = faulAlert.textFields![0].text {
+                    self.setFaul(user, reason)
+                }
+            }))
+            faulAlert.addAction(UIAlertAction(title: K.Texts.cancel, style: UIAlertAction.Style.cancel, handler: nil))
+
+            self.present(faulAlert, animated: true, completion: nil)
         }
         
         
-        let origImage = UIImage(named: "ban")
-        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+        let banImage = UIImage(named: K.Images.ban)
+        let tintedImage = banImage?.withRenderingMode(.alwaysTemplate)
         
         let blockUser = UIAction(title: "Bloquear cliente",
-                                    image: tintedImage,
-                                    identifier: nil,
-                                    discoverabilityTitle: nil,
-                                    attributes: .destructive,
-                                    handler: { _ in
+                                 image: tintedImage,
+                                 identifier: nil,
+                                 discoverabilityTitle: nil,
+                                 attributes: .destructive,
+                                 handler: { _ in
+            self.setUserStatus(user)
         })
         
-        let menu = UIMenu(title: "", options: .displayInline, children: [ordersHistory , addMissing, blockUser])
+        let enableImage = UIImage(named: K.Images.check)
+        let tintedEnableImage = enableImage?.withRenderingMode(.alwaysTemplate)
+        
+        let enableUser = UIAction(title: "Habilitar cliente",
+                                  image: tintedEnableImage) { action in
+            self.setUserStatus(user)
+        }
+        
+        var menu = UIMenu(title: "", options: .displayInline, children: [ordersHistory , addMissing, blockUser])
+        if user.isBaned {
+            menu = UIMenu(title: "", options: .displayInline, children: [ordersHistory , addMissing, enableUser])
+        }
     
         moreButton.menu = menu
         moreButton.showsMenuAsPrimaryAction = true
+    }
+    
+    func setFaulMenu(_ user: User) {
+        var actions: [UIAction] = []
+        
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.timeZone = TimeZone.current
+        dateFormatterGet.locale = NSLocale.current
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        for streak in user.streaks {
+            let timeRequest = Double(streak.description.after(first: ","))
+            let dateRequest = Date(timeIntervalSince1970: timeRequest ?? 0)
+            
+            let action = UIAction(title: "\(streak.description.before(first: ","))\n\(dateFormatterGet.string(from: dateRequest))") { action in
+                
+            }
+            actions.append(action)
+        }
+        let menu = UIMenu(title: "", options: .displayInline, children: actions)
+        
+        streaksButton.menu = menu
+        streaksButton.showsMenuAsPrimaryAction = true
     }
     
     func alert(title: String?, message: String?) {

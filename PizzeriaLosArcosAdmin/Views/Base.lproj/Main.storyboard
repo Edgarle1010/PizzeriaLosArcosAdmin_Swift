@@ -960,18 +960,20 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vEd-Lu-1eR" userLabel="statusView" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target">
                                                                         <rect key="frame" x="2.5" y="43" width="50" height="50"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ZB0-wY-dLI">
-                                                                                <rect key="frame" x="20.5" y="15" width="9.5" height="20.5"/>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QpJ-Fx-v9o">
+                                                                                <rect key="frame" x="10" y="8.5" width="30" height="33"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                                                                <color key="textColor" name="primaryColor"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
+                                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                                <state key="normal" title="1">
+                                                                                    <color key="titleColor" name="primaryColor"/>
+                                                                                </state>
+                                                                            </button>
                                                                         </subviews>
                                                                         <constraints>
-                                                                            <constraint firstItem="ZB0-wY-dLI" firstAttribute="centerY" secondItem="vEd-Lu-1eR" secondAttribute="centerY" id="1YZ-fW-ihA"/>
                                                                             <constraint firstAttribute="width" constant="50" id="1es-pf-ngD"/>
+                                                                            <constraint firstItem="QpJ-Fx-v9o" firstAttribute="centerX" secondItem="vEd-Lu-1eR" secondAttribute="centerX" id="7CD-Up-NTG"/>
+                                                                            <constraint firstItem="QpJ-Fx-v9o" firstAttribute="centerY" secondItem="vEd-Lu-1eR" secondAttribute="centerY" id="B5q-RP-rbD"/>
                                                                             <constraint firstAttribute="height" constant="50" id="bde-Bc-Cef"/>
-                                                                            <constraint firstItem="ZB0-wY-dLI" firstAttribute="centerX" secondItem="vEd-Lu-1eR" secondAttribute="centerX" id="dRs-Xg-bhj"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
@@ -1018,7 +1020,7 @@
                         <outlet property="ordersCompletedLabel" destination="RSH-do-mGQ" id="q7J-Yz-LHn"/>
                         <outlet property="phoneNumberLabel" destination="bue-55-TYJ" id="3AQ-e9-po8"/>
                         <outlet property="statusLabel" destination="JKu-R8-hty" id="CLL-PO-V3E"/>
-                        <outlet property="streaksLabel" destination="ZB0-wY-dLI" id="cdK-dM-IgJ"/>
+                        <outlet property="streaksButton" destination="QpJ-Fx-v9o" id="LOc-vo-87A"/>
                         <outlet property="totalConsumedLabel" destination="Gda-56-aqI" id="vIq-MK-fJP"/>
                         <segue destination="lQL-w4-k5p" kind="popoverPresentation" identifier="ClientDetailsToOrdersHistory" popoverAnchorView="mlI-U8-tsi" id="s4D-15-4MR">
                             <popoverArrowDirection key="popoverArrowDirection" right="YES"/>
@@ -1079,6 +1081,7 @@
                     <connections>
                         <outlet property="tableView" destination="Cod-v5-Vce" id="W1t-2h-lfL"/>
                         <outlet property="titleLabel" destination="MET-uX-JgA" id="1y2-aM-ZAP"/>
+                        <segue destination="p2W-CL-g8H" kind="showDetail" identifier="OrdersHistoryToOrderDetails" id="J46-rr-gUP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AnL-ig-TvG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1207,6 +1210,9 @@
             <point key="canvasLocation" x="1589" y="101"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="J46-rr-gUP"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="back" width="25" height="25"/>
         <image name="background" width="1280" height="853"/>

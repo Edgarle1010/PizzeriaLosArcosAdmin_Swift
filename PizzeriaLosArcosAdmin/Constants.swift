@@ -39,6 +39,7 @@ struct K {
         static let guestFunctionsMessage = "Al estar en modo invitado no tienes acceso a esta función. Inicia sesión o registrate para continuar."
         static let goBack = "Volver"
         static let ok = "OK"
+        static let cancel = "Cancelar"
         
         static let locationNotProveided = "Ubicación no proporcionada"
         
@@ -125,6 +126,7 @@ struct K {
         static let historyIcon = "history_icon"
         static let faul = "faul"
         static let ban = "ban"
+        static let check = "check"
     }
     
     struct Firebase {
@@ -135,6 +137,8 @@ struct K {
         static let lastNameField = "lastName"
         static let baned = "isBaned"
         static let fcmToken = "fcmToken"
+        static let streaks = "streaks"
+        static let isBaned = "isBaned"
         
         static let foodCollection = "Food"
         static let extraIngredientsCollection = "ExtraIngredients"
@@ -196,6 +200,7 @@ struct K {
         static let orderDetailsToUbicationMap = "OrderDetailsToUbicationMap"
         static let InProccessToServiceMessage = "InProccessToServiceMessage"
         static let clientDetailsToOrdersHistory = "ClientDetailsToOrdersHistory"
+        static let ordersHistoryToOrderDetails = "OrdersHistoryToOrderDetails"
     }
     
     struct ViewControllers {

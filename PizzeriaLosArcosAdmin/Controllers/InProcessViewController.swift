@@ -240,6 +240,23 @@ class InProcessViewController: UIViewController {
         }
     }
     
+    func changeStateToCanceled(_ order: Order, _ status: String, _ date: Double) {
+        ProgressHUD.show()
+        self.db.collection(K.Firebase.ordersCollection).document(order.folio).updateData([
+            K.Firebase.status: status,
+            K.Firebase.dateCanceled: date,
+            K.Firebase.complete: true
+        ]) {
+            err in
+            ProgressHUD.dismiss()
+            if let err = err {
+                self.alert(title: K.Texts.problemOcurred, message: err.localizedDescription)
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
+    
     func alert(title: String?, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: K.Texts.ok, style: UIAlertAction.Style.default, handler: nil))
@@ -406,10 +423,14 @@ extension InProcessViewController: UITableViewDelegate, UITableViewDataSource {
                                             discoverabilityTitle: nil,
                                             attributes: .destructive,
                                             handler: { _ in
-                    print("Remove Action")
+                    self.getUserToken(currOrder.client) { token in
+                        let sender = PushNotificationSender()
+                        sender.sendPushNotification(to: token, title: "Tu pedido ha sido cancelado correctamente", body: "Esperamos tu nuevo pedido", folio: currOrder.folio, imagenURL: nil, options: nil)
+                        self.changeStateToCanceled(currOrder, "Cancelado", Date().timeIntervalSince1970)
+                    }
                 })
                 
-                if currOrder.status == "Entregado" {
+                if currOrder.status == "Entregado" || currOrder.status == "Cancelado" {
                     return UIMenu(title: "", image: nil, children: [printOrder, showDetails])
                 } else {
                     return UIMenu(title: "", image: nil, children: [changeStatus, printOrder, showDetails, removeAction])

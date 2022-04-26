@@ -163,6 +163,7 @@ struct K {
         static let dateProcessed = "dateProcessed"
         static let dateFinished = "dateFinished"
         static let dateDelivered = "dateDelivered"
+        static let dateCanceled = "dateCanceled"
         
         static let notificationsCollection = "notifications"
         static let userToken = "userToken"

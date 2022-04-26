@@ -696,6 +696,7 @@
                         <outlet property="statusLabel" destination="Njc-mJ-hKT" id="aVd-d1-kdT"/>
                         <outlet property="statusView" destination="ZK3-y8-3Ra" id="oqg-If-I8L"/>
                         <outlet property="tableView" destination="gpG-wv-HRE" id="wkV-WH-oGh"/>
+                        <outlet property="titleDateCanceledLabel" destination="4KX-DJ-qly" id="xnP-eR-QQL"/>
                         <outlet property="totalLabel" destination="T2t-40-Mse" id="fce-tf-4Tg"/>
                         <outlet property="totalView" destination="77s-Tg-iqV" id="m1U-SV-HjX"/>
                         <outlet property="ubicationLabel" destination="cme-fc-0gN" id="tre-Yv-XwS"/>
@@ -713,7 +714,7 @@
             <objects>
                 <viewController storyboardIdentifier="ClientDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aOz-V3-jTy" customClass="ClientDetailsViewController" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hiZ-Ck-nwN">
-                        <rect key="frame" x="0.0" y="0.0" width="818" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="818.5" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5A-q2-Z4d">
@@ -1097,14 +1098,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="separatorColor" name="secundaryColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="wY8-7E-mty">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customerCell" id="4Uy-xL-HZk">
-                                <rect key="frame" x="0.0" y="88.5" width="375" height="43.5"/>
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Uy-xL-HZk" id="hdz-0f-y2p">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1121,7 +1117,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kEQ-ff-qc6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3407" y="-215"/>
+            <point key="canvasLocation" x="4114.0703517587935" y="-215.10791366906477"/>
         </scene>
         <!--Clientes-->
         <scene sceneID="BXb-RQ-rEG">
@@ -1130,7 +1126,7 @@
                     <tabBarItem key="tabBarItem" title="Clientes" image="clients" id="naA-hW-6yg"/>
                     <connections>
                         <segue destination="aOz-V3-jTy" kind="relationship" relationship="detailViewController" id="vCB-QY-LFp"/>
-                        <segue destination="uzR-hJ-O0p" kind="relationship" relationship="masterViewController" id="ZVD-DW-aGX"/>
+                        <segue destination="UMC-UF-ydT" kind="relationship" relationship="masterViewController" id="ZVD-DW-aGX"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kuC-2Z-1Mo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1208,6 +1204,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VQN-I8-Yvi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1589" y="101"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7Yc-8b-bYh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UMC-UF-ydT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AGd-9J-4Ss">
+                        <rect key="frame" x="0.0" y="24" width="1194" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uzR-hJ-O0p" kind="relationship" relationship="rootViewController" id="uzq-Ng-pNB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z6G-yz-HUk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3406.5326633165828" y="-215.10791366906477"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

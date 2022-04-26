@@ -25,6 +25,7 @@ class OrderDetailsViewController: UIViewController {
     @IBOutlet weak var dateRequestLabel: UILabel!
     @IBOutlet weak var dateProcessedLabel: UILabel!
     @IBOutlet weak var dateFinishedLabel: UILabel!
+    @IBOutlet weak var titleDateCanceledLabel: UILabel!
     @IBOutlet weak var dateDeliveredLabel: UILabel!
     
     @IBOutlet weak var statusView: UIView!
@@ -112,11 +113,13 @@ class OrderDetailsViewController: UIViewController {
                                 let timeProcessed = order.dateProcessed ?? 0.0
                                 let timeFinished = order.dateFinished ?? 0.0
                                 let timeDelivered = order.dateDelivered ?? 0.0
+                                let timeCanceled = order.dateCanceled ?? 0.0
                                 
                                 let dateRequest = Date(timeIntervalSince1970: timeRequest)
                                 let dateProcessed = Date(timeIntervalSince1970: timeProcessed)
                                 let dateFinished = Date(timeIntervalSince1970: timeFinished)
                                 let dateDelivered = Date(timeIntervalSince1970: timeDelivered)
+                                let dateCenceled = Date(timeIntervalSince1970: timeCanceled)
                                 
                                 let dateFormatterGet = DateFormatter()
                                 dateFormatterGet.timeZone = TimeZone.current
@@ -146,6 +149,10 @@ class OrderDetailsViewController: UIViewController {
                                     self.dateDeliveredLabel.text = "\(dateFormatter.string(from: dateDelivered))"
                                 } else {
                                     self.dateDeliveredLabel.text = ""
+                                }
+                                if timeCanceled != 0.0 {
+                                    self.titleDateCanceledLabel.text = "Hora de cancelación:"
+                                    self.dateDeliveredLabel.text = "\(dateFormatter.string(from: dateCenceled))"
                                 }
                                 
                                 self.statusLabel.text = order.status
@@ -216,11 +223,15 @@ class OrderDetailsViewController: UIViewController {
                                     discoverabilityTitle: nil,
                                     attributes: .destructive,
                                     handler: { _ in
-            print("Remove Action")
+            self.getUserToken(order.client) { token in
+                let sender = PushNotificationSender()
+                sender.sendPushNotification(to: token, title: "¡Tu pedido ha sido cancelado correctamente", body: "Esperamos tu nuevo pedido", folio: order.folio, imagenURL: nil, options: nil)
+                self.changeStateToCanceled(order, "Cancelado", Date().timeIntervalSince1970)
+            }
         })
         
         var menu = UIMenu(title: "", options: .displayInline, children: [changeStatus , printOrder , removeAction])
-        if order.status == "Entregado" {
+        if order.status == "Entregado" || order.status == "Cancelado" {
             menu = UIMenu(title: "", options: .displayInline, children: [printOrder])
         }
         
@@ -290,6 +301,23 @@ class OrderDetailsViewController: UIViewController {
             K.Firebase.dateDelivered: date,
             K.Firebase.complete: true
         ]) { err in
+            ProgressHUD.dismiss()
+            if let err = err {
+                self.alert(title: K.Texts.problemOcurred, message: err.localizedDescription)
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
+    
+    func changeStateToCanceled(_ order: Order, _ status: String, _ date: Double) {
+        ProgressHUD.show()
+        self.db.collection(K.Firebase.ordersCollection).document(order.folio).updateData([
+            K.Firebase.status: status,
+            K.Firebase.dateCanceled: date,
+            K.Firebase.complete: true
+        ]) {
+            err in
             ProgressHUD.dismiss()
             if let err = err {
                 self.alert(title: K.Texts.problemOcurred, message: err.localizedDescription)

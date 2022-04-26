@@ -11,12 +11,31 @@ import FirebaseFirestoreSwift
 import ProgressHUD
 
 class ClientsTableViewController: UITableViewController {
+    lazy var searchController: UISearchController = {
+        let s = UISearchController(searchResultsController: nil)
+        s.searchResultsUpdater = self
+        
+        s.obscuresBackgroundDuringPresentation = false
+        s.searchBar.placeholder = "Buscar usuarios..."
+        s.searchBar.sizeToFit()
+        s.searchBar.searchBarStyle = .prominent
+        
+        s.searchBar.scopeButtonTitles = ["All", "Celular", "Nombre", "Apellido"]
+        
+        s.searchBar.delegate = self
+        
+        return s
+    }()
+    
     var userList: [User] = []
+    var filteredUsers: [User] = []
     
     let db = Firestore.firestore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.searchController = searchController
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +74,29 @@ class ClientsTableViewController: UITableViewController {
         }
     }
     
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredUsers = userList.filter({ (user: User) -> Bool in
+            let doesCategoryMatch = (scope == "All") || (user.phoneNumber == scope)
+            
+            if isSearchBarEmpty() {
+                return doesCategoryMatch
+            } else {
+                return doesCategoryMatch && user.phoneNumber.lowercased().contains(searchText.lowercased())
+            }
+        })
+        
+        tableView.reloadData()
+    }
+    
+    func isSearchBarEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func isFiltering() -> Bool {
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        return searchController.isActive && (!isSearchBarEmpty() || searchBarScopeIsFiltering)
+    }
+    
     func alert(title: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
@@ -69,14 +111,25 @@ class ClientsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering() { return filteredUsers.count }
         return userList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Collections.customerCell, for: indexPath) as UITableViewCell
-        cell.textLabel?.text = userList[indexPath.row].phoneNumber
+        
+        let currentUser: User
+        
+        if isFiltering() {
+            currentUser = filteredUsers[indexPath.row]
+        } else {
+            currentUser = userList[indexPath.row]
+        }
+        
+        cell.textLabel?.text = currentUser.phoneNumber
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.textColor = UIColor(named: K.BrandColors.primaryColor)
+        
         return cell
     }
     
@@ -88,6 +141,26 @@ class ClientsTableViewController: UITableViewController {
         }
     }
 
+}
+
+
+//MARK: - UISearchController
+
+extension ClientsTableViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterContentForSearchText(searchText: searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+    }
+}
+
+extension ClientsTableViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        
+        filterContentForSearchText(searchText: searchController.searchBar.text!, scope: scope)
+    }
 }
 
 

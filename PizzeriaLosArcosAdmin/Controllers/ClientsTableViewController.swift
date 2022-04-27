@@ -20,12 +20,13 @@ class ClientsTableViewController: UITableViewController {
         s.searchBar.sizeToFit()
         s.searchBar.searchBarStyle = .prominent
         
-        s.searchBar.scopeButtonTitles = ["All", "Celular", "Nombre", "Apellido"]
+        s.searchBar.scopeButtonTitles = ["Celular", "Nombre", "Apellido"]
         
         s.searchBar.delegate = self
         
         return s
     }()
+    var scope: String?
     
     var userList: [User] = []
     var filteredUsers: [User] = []
@@ -74,14 +75,22 @@ class ClientsTableViewController: UITableViewController {
         }
     }
     
-    func filterContentForSearchText(searchText: String, scope: String = "All") {
+    func filterContentForSearchText(searchText: String, scope: String) {
         filteredUsers = userList.filter({ (user: User) -> Bool in
-            let doesCategoryMatch = (scope == "All") || (user.phoneNumber == scope)
+            let doesCategoryMatch = (scope == "Nombre") || (scope == "Celular") || (scope == "Apellido")
+            
+            self.scope = scope
             
             if isSearchBarEmpty() {
                 return doesCategoryMatch
             } else {
-                return doesCategoryMatch && user.phoneNumber.lowercased().contains(searchText.lowercased())
+                if scope == "Nombre" {
+                    return doesCategoryMatch && user.name.lowercased().contains(searchText.lowercased())
+                } else if scope == "Celular" {
+                    return doesCategoryMatch && user.phoneNumber.lowercased().contains(searchText.lowercased())
+                } else {
+                    return doesCategoryMatch && user.lastName.lowercased().contains(searchText.lowercased())
+                }
             }
         })
         
@@ -126,7 +135,14 @@ class ClientsTableViewController: UITableViewController {
             currentUser = userList[indexPath.row]
         }
         
-        cell.textLabel?.text = currentUser.phoneNumber
+        if scope == "Nombre" {
+            cell.textLabel?.text = currentUser.name
+        } else if scope == "Apellido" {
+            cell.textLabel?.text = currentUser.lastName
+        } else {
+            cell.textLabel?.text = currentUser.phoneNumber
+        }
+        
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.textColor = UIColor(named: K.BrandColors.primaryColor)
         

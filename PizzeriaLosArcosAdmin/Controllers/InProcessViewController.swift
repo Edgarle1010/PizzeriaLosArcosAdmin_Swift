@@ -328,6 +328,12 @@ protocol PassDataDelegate {
 extension InProcessViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if ordersList.count == 0 {
+            tableView.setEmptyView(title: "No hay pedidos en cola", message: "Aquí apareceran los pedidos")
+        } else {
+            tableView.restore()
+        }
+        
         return ordersList.count
     }
     
@@ -390,7 +396,7 @@ extension InProcessViewController: UITableViewDelegate, UITableViewDataSource {
                     } else if currOrder.status == "En proceso" {
                         self.getUserToken(currOrder.client) { token in
                             let sender = PushNotificationSender()
-                            sender.sendPushNotification(to: token, title: "¡Tu pedido está listo!", body: "Gracias por tu compra", folio: currOrder.folio, imagenURL: nil, options: nil)
+                            sender.sendPushNotification(to: token, title: "¡Tu pedido está listo!", body: "Recuarda pasar por él a la sucursal del Gomez Morín", folio: currOrder.folio, imagenURL: nil, options: nil)
                             self.changeStateToFinished(currOrder, "Listo", Date().timeIntervalSince1970)
                         }
                     } else if currOrder.status == "Listo" {

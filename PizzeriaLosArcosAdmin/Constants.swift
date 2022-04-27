@@ -202,6 +202,7 @@ struct K {
         static let InProccessToServiceMessage = "InProccessToServiceMessage"
         static let clientDetailsToOrdersHistory = "ClientDetailsToOrdersHistory"
         static let ordersHistoryToOrderDetails = "OrdersHistoryToOrderDetails"
+        static let fullOrdersHistoryToOrderDetails = "FullOrdersHistoryToOrderDetails"
     }
     
     struct ViewControllers {
@@ -213,6 +214,7 @@ struct K {
         static let clientDetailsViewController = "ClientDetailsViewController"
         static let splitViewController = "SplitViewController"
         static let ordersHistoryViewController = "OrdersHistoryViewController"
+        static let menuSplitViewController = "MenuSplitViewController"
     }
     
     struct Titles {

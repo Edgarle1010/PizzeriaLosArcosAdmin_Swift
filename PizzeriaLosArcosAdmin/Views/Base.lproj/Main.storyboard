@@ -130,7 +130,43 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZRa-dC-rHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2487" y="-1713"/>
+            <point key="canvasLocation" x="2066" y="-1714"/>
+        </scene>
+        <!--Historial de pedidos-->
+        <scene sceneID="aTZ-Co-7m6">
+            <objects>
+                <viewController id="kqV-Hh-B4W" customClass="FullOrderHistoryViewController" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4lm-fW-3fi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="680"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fyy-0E-UCU">
+                                <rect key="frame" x="0.0" y="63" width="375" height="617"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="kqV-Hh-B4W" id="LJg-ie-SON"/>
+                                    <outlet property="delegate" destination="kqV-Hh-B4W" id="8xr-w8-6oJ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mGY-Uv-K9Q"/>
+                        <color key="backgroundColor" name="quarterColor"/>
+                        <constraints>
+                            <constraint firstItem="fyy-0E-UCU" firstAttribute="top" secondItem="mGY-Uv-K9Q" secondAttribute="top" id="Oh0-0v-IFC"/>
+                            <constraint firstItem="fyy-0E-UCU" firstAttribute="bottom" secondItem="mGY-Uv-K9Q" secondAttribute="bottom" id="PQx-j1-PlF"/>
+                            <constraint firstItem="fyy-0E-UCU" firstAttribute="trailing" secondItem="mGY-Uv-K9Q" secondAttribute="trailing" id="Ur0-Ah-POu"/>
+                            <constraint firstItem="fyy-0E-UCU" firstAttribute="leading" secondItem="mGY-Uv-K9Q" secondAttribute="leading" id="nFM-ks-laT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Historial de pedidos" id="BIp-xy-IEg"/>
+                    <connections>
+                        <outlet property="tableView" destination="fyy-0E-UCU" id="qXQ-Bf-ws3"/>
+                        <segue destination="p2W-CL-g8H" kind="showDetail" identifier="FullOrdersHistoryToOrderDetails" id="cnV-fT-M24"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gEg-7U-UA2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2722" y="-2425"/>
         </scene>
         <!--Recepción-->
         <scene sceneID="mae-sB-sDY">
@@ -286,6 +322,30 @@
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6I-qX-43M">
                                                 <rect key="frame" x="0.0" y="345" width="582" height="335"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHQ-Hl-591" customClass="ButtonWithShadow" customModule="PizzeriaLosArcos" customModuleProvider="target">
+                                                        <rect key="frame" x="186" y="142.5" width="210" height="50"/>
+                                                        <color key="backgroundColor" name="primaryColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="ar9-U8-zEG"/>
+                                                            <constraint firstAttribute="height" constant="50" id="kzd-dN-Z8K"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="17"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Ver todos los pedidos">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="kON-iO-3jp" kind="popoverPresentation" identifier="InProccessToOrdersHistory" popoverAnchorView="hHQ-Hl-591" id="IRK-ET-WOD">
+                                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                            </segue>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="hHQ-Hl-591" firstAttribute="centerY" secondItem="N6I-qX-43M" secondAttribute="centerY" id="twW-f1-Emn"/>
+                                                    <constraint firstItem="hHQ-Hl-591" firstAttribute="centerX" secondItem="N6I-qX-43M" secondAttribute="centerX" id="vHY-qr-BNJ"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                     </stackView>
@@ -316,23 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="stb-W1-roR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2506" y="-952"/>
-        </scene>
-        <!--Precios-->
-        <scene sceneID="wNB-mc-gUc">
-            <objects>
-                <viewController id="XOz-PM-ZKF" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="z65-CD-ga7">
-                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="dRG-7D-3IK"/>
-                        <color key="backgroundColor" name="quarterColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Precios" image="menucard" id="ep5-U2-GmB"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gPw-Ck-JlY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2487" y="1035"/>
+            <point key="canvasLocation" x="2404" y="-953"/>
         </scene>
         <!--Order Details View Controller-->
         <scene sceneID="XbW-qK-DYL">
@@ -714,7 +758,7 @@
             <objects>
                 <viewController storyboardIdentifier="ClientDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aOz-V3-jTy" customClass="ClientDetailsViewController" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hiZ-Ck-nwN">
-                        <rect key="frame" x="0.0" y="0.0" width="818.5" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="818" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5A-q2-Z4d">
@@ -1032,6 +1076,80 @@
             </objects>
             <point key="canvasLocation" x="3406.5326633165828" y="464.74820143884898"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="TH7-d0-DXN">
+            <objects>
+                <viewController id="iR8-ba-CuY" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7bc-bD-bkD">
+                        <rect key="frame" x="0.0" y="0.0" width="818.5" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="HRB-Eu-eQS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ycG-F6-zkf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3407" y="1906"/>
+        </scene>
+        <!--Menú-->
+        <scene sceneID="xel-gA-XPo">
+            <objects>
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="kTC-3A-QCs" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="McY-FX-7kK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="menuCell" id="3XZ-Pt-rSb">
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3XZ-Pt-rSb" id="HOw-Q9-cqG">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kTC-3A-QCs" id="EyT-op-L0d"/>
+                            <outlet property="delegate" destination="kTC-3A-QCs" id="bnA-xg-Gxv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Menú" id="pLT-xv-baD"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lg8-BF-pbT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4114" y="1219"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fd9-b9-wx4">
+            <objects>
+                <navigationController id="39y-4z-gFf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Ko-dn-OmQ">
+                        <rect key="frame" x="0.0" y="24" width="1194" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kTC-3A-QCs" kind="relationship" relationship="rootViewController" id="nL2-Cx-U38"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gEj-EI-elU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3407" y="1219"/>
+        </scene>
+        <!--Menú-->
+        <scene sceneID="GiL-mX-c2d">
+            <objects>
+                <splitViewController storyboardIdentifier="MenuSplitViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6IN-cf-hbO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Menú" image="menucard" id="GR9-SE-zdP"/>
+                    <connections>
+                        <segue destination="39y-4z-gFf" kind="relationship" relationship="masterViewController" id="qxN-zM-bzZ"/>
+                        <segue destination="iR8-ba-CuY" kind="relationship" relationship="detailViewController" id="dn2-Ul-5Tj"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6PG-aj-AjK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2404" y="1555"/>
+        </scene>
         <!--Orders History View Controller-->
         <scene sceneID="Vdc-X7-0sF">
             <objects>
@@ -1087,9 +1205,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AnL-ig-TvG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4237.6884422110552" y="464.74820143884898"/>
+            <point key="canvasLocation" x="4114" y="465"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Lista de clientes-->
         <scene sceneID="jjY-cj-f1x">
             <objects>
                 <tableViewController storyboardIdentifier="ClientsTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" clearsSelectionOnViewWillAppear="NO" id="uzR-hJ-O0p" customClass="ClientsTableViewController" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target" sceneMemberID="viewController">
@@ -1113,7 +1231,7 @@
                             <outlet property="delegate" destination="uzR-hJ-O0p" id="n33-Je-a3t"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="upz-nD-bXn"/>
+                    <navigationItem key="navigationItem" title="Lista de clientes" largeTitleDisplayMode="always" id="upz-nD-bXn"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kEQ-ff-qc6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1131,7 +1249,7 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kuC-2Z-1Mo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2506" y="103"/>
+            <point key="canvasLocation" x="2404" y="101"/>
         </scene>
         <!--Ubication Map View Controller-->
         <scene sceneID="YgH-Tt-laT">
@@ -1160,7 +1278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tu-rK-6mI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3407" y="-1714"/>
+            <point key="canvasLocation" x="4114.0703517587935" y="-1714.3884892086332"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Eaw-V3-MBw">
@@ -1199,6 +1317,7 @@
                     <connections>
                         <segue destination="BTM-Hq-1LE" kind="relationship" relationship="viewControllers" id="BDO-VW-7B7"/>
                         <segue destination="ufe-4G-HGf" kind="relationship" relationship="viewControllers" id="TeJ-2m-12S"/>
+                        <segue destination="6IN-cf-hbO" kind="relationship" relationship="viewControllers" id="AgL-ET-nJ2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VQN-I8-Yvi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1223,9 +1342,31 @@
             </objects>
             <point key="canvasLocation" x="3406.5326633165828" y="-215.10791366906477"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="uvJ-EC-VpA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kON-iO-3jp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" id="e8d-OA-J8C">
+                        <rect key="frame" x="0.0" y="13" width="375" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="primaryColor"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" name="secundaryColor"/>
+                        </navigationBarAppearance>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kqV-Hh-B4W" kind="relationship" relationship="rootViewController" id="aCN-8O-eBg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="84l-MO-6Jk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2721.6080402010052" y="-1714.3884892086332"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="J46-rr-gUP"/>
+        <segue reference="cnV-fT-M24"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="back" width="25" height="25"/>

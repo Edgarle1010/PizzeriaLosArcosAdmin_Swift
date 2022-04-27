@@ -82,9 +82,18 @@ class OrdersHistoryViewController: UIViewController {
 
 }
 
+
+//MARK: - UITableView delegate & data source
+
 extension OrdersHistoryViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        orderList.count
+        if orderList.count == 0 {
+            tableView.setEmptyView(title: "El cliente no ha hecho ningún pedido", message: "")
+        } else {
+            tableView.restore()
+        }
+        
+        return orderList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

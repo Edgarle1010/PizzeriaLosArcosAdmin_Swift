@@ -35,6 +35,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                 self.navigationItem.title = "Recepción"
             case K.ViewControllers.splitViewController:
                 self.navigationItem.title = "Clientes"
+            case K.ViewControllers.menuSplitViewController:
+                self.navigationItem.title = "Menú"
             default:
                 break;
             }

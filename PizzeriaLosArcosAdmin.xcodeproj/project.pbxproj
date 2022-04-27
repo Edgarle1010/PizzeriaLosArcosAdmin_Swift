@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		90C79C5EFF63763940B0CE4A /* Pods_PizzeriaLosArcosAdmin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047FFBEF166240A3335CFBD1 /* Pods_PizzeriaLosArcosAdmin.framework */; };
+		B3431BE52818F66B00973C1C /* FullOrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3431BE42818F66B00973C1C /* FullOrderHistoryViewController.swift */; };
 		B395CCB128125D4A003EE2A4 /* OrdersHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B395CCB028125D4A003EE2A4 /* OrdersHistoryViewController.swift */; };
 		B3B0B415280E3A3500F01D89 /* ServiceMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B0B414280E3A3500F01D89 /* ServiceMessageTableViewController.swift */; };
 		B3B0B419280F34BC00F01D89 /* ClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B0B418280F34BC00F01D89 /* ClientsTableViewController.swift */; };
@@ -44,6 +45,7 @@
 		047FFBEF166240A3335CFBD1 /* Pods_PizzeriaLosArcosAdmin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PizzeriaLosArcosAdmin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5499B2FD8EF8F5C9E954497F /* Pods-PizzeriaLosArcosAdmin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzeriaLosArcosAdmin.debug.xcconfig"; path = "Target Support Files/Pods-PizzeriaLosArcosAdmin/Pods-PizzeriaLosArcosAdmin.debug.xcconfig"; sourceTree = "<group>"; };
 		559219C63499CD2EB053AF84 /* Pods-PizzeriaLosArcosAdmin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzeriaLosArcosAdmin.release.xcconfig"; path = "Target Support Files/Pods-PizzeriaLosArcosAdmin/Pods-PizzeriaLosArcosAdmin.release.xcconfig"; sourceTree = "<group>"; };
+		B3431BE42818F66B00973C1C /* FullOrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderHistoryViewController.swift; sourceTree = "<group>"; };
 		B395CCB028125D4A003EE2A4 /* OrdersHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersHistoryViewController.swift; sourceTree = "<group>"; };
 		B3B0B414280E3A3500F01D89 /* ServiceMessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMessageTableViewController.swift; sourceTree = "<group>"; };
 		B3B0B418280F34BC00F01D89 /* ClientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsTableViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				B3B0B418280F34BC00F01D89 /* ClientsTableViewController.swift */,
 				B3B0B41C280F5D7600F01D89 /* ClientDetailsViewController.swift */,
 				B395CCB028125D4A003EE2A4 /* OrdersHistoryViewController.swift */,
+				B3431BE42818F66B00973C1C /* FullOrderHistoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				B3E6FFDF27F403AD006AF6AE /* AppManager.swift in Sources */,
 				B395CCB128125D4A003EE2A4 /* OrdersHistoryViewController.swift in Sources */,
 				B3B0B41D280F5D7600F01D89 /* ClientDetailsViewController.swift in Sources */,
+				B3431BE52818F66B00973C1C /* FullOrderHistoryViewController.swift in Sources */,
 				B3F905CB27F2D4AB00E647B9 /* Constants.swift in Sources */,
 				B3D03D9127FD50F000760593 /* Notification.swift in Sources */,
 				B3E6FFE727F41263006AF6AE /* Order.swift in Sources */,

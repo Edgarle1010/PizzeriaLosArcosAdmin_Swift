@@ -208,7 +208,12 @@ class ClientDetailsViewController: UIViewController {
                                  discoverabilityTitle: nil,
                                  attributes: .destructive,
                                  handler: { _ in
-            self.setUserStatus(user)
+            let alertMessage = UIAlertController(title: "¿Estás seguro de suspender el cliente?", message: "El cliente no podrá hacer pedidos mientras esté suspendido", preferredStyle: .alert)
+            alertMessage.addAction(UIAlertAction(title: "Suspender", style: .destructive, handler: { action in
+                self.setUserStatus(user)
+            }))
+            alertMessage.addAction(UIAlertAction(title: "No", style: .default))
+            self.present(alertMessage, animated: true, completion: nil)
         })
         
         let enableImage = UIImage(named: K.Images.check)
@@ -216,7 +221,12 @@ class ClientDetailsViewController: UIViewController {
         
         let enableUser = UIAction(title: "Habilitar cliente",
                                   image: tintedEnableImage) { action in
-            self.setUserStatus(user)
+            let alertMessage = UIAlertController(title: "¿Estás seguro de habilitar el cliente?", message: "El cliente podrá hacer pedidos de nuevo", preferredStyle: .alert)
+            alertMessage.addAction(UIAlertAction(title: "Habilitar", style: .cancel, handler: { action in
+                self.setUserStatus(user)
+            }))
+            alertMessage.addAction(UIAlertAction(title: "No", style: .default))
+            self.present(alertMessage, animated: true, completion: nil)
         }
         
         var menu = UIMenu(title: "", options: .displayInline, children: [ordersHistory , addMissing, blockUser])

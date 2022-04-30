@@ -14,6 +14,7 @@ public class Food: Codable {
     let bPrice: Int
     let mPrice: Int?
     let sPrice: Int?
+    let listPosition: Int?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -22,6 +23,7 @@ public class Food: Codable {
         case bPrice
         case mPrice
         case sPrice
+        case listPosition
     }
     
     func getPrice(_ size: Int) -> Int {

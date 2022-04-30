@@ -27,6 +27,9 @@
 		B3E6FFEB27F4129C006AF6AE /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6FFE827F4129C006AF6AE /* Food.swift */; };
 		B3E6FFEC27F4129C006AF6AE /* ExtraIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6FFE927F4129C006AF6AE /* ExtraIngredient.swift */; };
 		B3E6FFED27F4129C006AF6AE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E6FFEA27F4129C006AF6AE /* Item.swift */; };
+		B3EC6E39281B8919006D8D2C /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC6E38281B8919006D8D2C /* MenuTableViewController.swift */; };
+		B3EC6E3B281B92E1006D8D2C /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC6E3A281B92E1006D8D2C /* FoodListTableViewController.swift */; };
+		B3EC6E3D281BA612006D8D2C /* FoodDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC6E3C281BA612006D8D2C /* FoodDetailsViewController.swift */; };
 		B3F905B027F2CD3800E647B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F905AF27F2CD3800E647B9 /* AppDelegate.swift */; };
 		B3F905B227F2CD3800E647B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F905B127F2CD3800E647B9 /* SceneDelegate.swift */; };
 		B3F905B427F2CD3800E647B9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F905B327F2CD3800E647B9 /* LoginViewController.swift */; };
@@ -65,6 +68,9 @@
 		B3E6FFE827F4129C006AF6AE /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		B3E6FFE927F4129C006AF6AE /* ExtraIngredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtraIngredient.swift; sourceTree = "<group>"; };
 		B3E6FFEA27F4129C006AF6AE /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		B3EC6E38281B8919006D8D2C /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		B3EC6E3A281B92E1006D8D2C /* FoodListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListTableViewController.swift; sourceTree = "<group>"; };
+		B3EC6E3C281BA612006D8D2C /* FoodDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailsViewController.swift; sourceTree = "<group>"; };
 		B3F905AC27F2CD3800E647B9 /* PizzeriaLosArcosAdmin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzeriaLosArcosAdmin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F905AF27F2CD3800E647B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3F905B127F2CD3800E647B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +194,9 @@
 				B3B0B41C280F5D7600F01D89 /* ClientDetailsViewController.swift */,
 				B395CCB028125D4A003EE2A4 /* OrdersHistoryViewController.swift */,
 				B3431BE42818F66B00973C1C /* FullOrderHistoryViewController.swift */,
+				B3EC6E38281B8919006D8D2C /* MenuTableViewController.swift */,
+				B3EC6E3A281B92E1006D8D2C /* FoodListTableViewController.swift */,
+				B3EC6E3C281BA612006D8D2C /* FoodDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -312,6 +321,7 @@
 			files = (
 				B3D03D8D27FD4E5F00760593 /* PushNotificationManager.swift in Sources */,
 				B3B0B419280F34BC00F01D89 /* ClientsTableViewController.swift in Sources */,
+				B3EC6E39281B8919006D8D2C /* MenuTableViewController.swift in Sources */,
 				B3E6FFEB27F4129C006AF6AE /* Food.swift in Sources */,
 				B3E6FFDF27F403AD006AF6AE /* AppManager.swift in Sources */,
 				B395CCB128125D4A003EE2A4 /* OrdersHistoryViewController.swift in Sources */,
@@ -320,8 +330,10 @@
 				B3F905CB27F2D4AB00E647B9 /* Constants.swift in Sources */,
 				B3D03D9127FD50F000760593 /* Notification.swift in Sources */,
 				B3E6FFE727F41263006AF6AE /* Order.swift in Sources */,
+				B3EC6E3D281BA612006D8D2C /* FoodDetailsViewController.swift in Sources */,
 				B3CF3418280691AA00A6E3DE /* UbicationMapViewController.swift in Sources */,
 				B3F905B427F2CD3800E647B9 /* LoginViewController.swift in Sources */,
+				B3EC6E3B281B92E1006D8D2C /* FoodListTableViewController.swift in Sources */,
 				B3F905B027F2CD3800E647B9 /* AppDelegate.swift in Sources */,
 				B3B0B41B280F355900F01D89 /* User.swift in Sources */,
 				B3E6FFDD27F401C2006AF6AE /* TabBarController.swift in Sources */,

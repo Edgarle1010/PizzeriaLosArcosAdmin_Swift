@@ -127,6 +127,7 @@ struct K {
         static let faul = "faul"
         static let ban = "ban"
         static let check = "check"
+        static let edit = "edit"
     }
     
     struct Firebase {
@@ -203,6 +204,7 @@ struct K {
         static let clientDetailsToOrdersHistory = "ClientDetailsToOrdersHistory"
         static let ordersHistoryToOrderDetails = "OrdersHistoryToOrderDetails"
         static let fullOrdersHistoryToOrderDetails = "FullOrdersHistoryToOrderDetails"
+        static let menuToFood = "MenuToFood"
     }
     
     struct ViewControllers {
@@ -237,5 +239,6 @@ struct K {
         static let notificationCell = "notificationCell"
         
         static let customerCell = "customerCell"
+        static let menuCell = "menuCell"
     }
 }

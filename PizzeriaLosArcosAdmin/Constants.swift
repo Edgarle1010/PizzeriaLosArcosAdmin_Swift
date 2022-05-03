@@ -144,6 +144,10 @@ struct K {
         static let foodCollection = "Food"
         static let extraIngredientsCollection = "ExtraIngredients"
         static let id = "id"
+        static let description = "description"
+        static let bPrice = "bPrice"
+        static let mPrice = "mPrice"
+        static let sPrice = "sPrice"
         static let listPosition = "listPosition"
         
         static let waitTimeCollection = "waitTime"

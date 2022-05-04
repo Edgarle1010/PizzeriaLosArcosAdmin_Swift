@@ -16,18 +16,20 @@ public class ExtraIngredient: Object, Codable {
     @Persisted var bPrice: Int
     @Persisted var mPrice: Int?
     @Persisted var sPrice: Int?
+    @Persisted var listPosition: Int?
     
     override init() {
             super.init()
     }
     
-    init(id: String, title: String, food: String, bPrice: Int, mPrice: Int, sPrice: Int) {
+    init(id: String, title: String, food: String, bPrice: Int, mPrice: Int, sPrice: Int, listPosition: Int) {
         self.id = id
         self.title = title
         self.food = food
         self.bPrice = bPrice
         self.mPrice = mPrice
         self.sPrice = sPrice
+        self.listPosition = listPosition
     }
     
     enum CodingKeys: String, CodingKey {
@@ -37,6 +39,7 @@ public class ExtraIngredient: Object, Codable {
         case bPrice
         case mPrice
         case sPrice
+        case listPosition
     }
     
     required public init(from decoder: Decoder) throws {
@@ -48,6 +51,7 @@ public class ExtraIngredient: Object, Codable {
         bPrice = try values.decodeIfPresent(Int.self, forKey: .bPrice)!
         mPrice = try values.decodeIfPresent(Int.self, forKey: .mPrice)
         sPrice = try values.decodeIfPresent(Int.self, forKey: .sPrice)
+        listPosition = try values.decodeIfPresent(Int.self, forKey: .listPosition)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -59,6 +63,7 @@ public class ExtraIngredient: Object, Codable {
         try container.encodeIfPresent(bPrice, forKey: .bPrice)
         try container.encodeIfPresent(mPrice, forKey: .mPrice)
         try container.encodeIfPresent(sPrice, forKey: .sPrice)
+        try container.encodeIfPresent(listPosition, forKey: .listPosition)
     }
     
     func getPrice(_ size: Int) -> Int {

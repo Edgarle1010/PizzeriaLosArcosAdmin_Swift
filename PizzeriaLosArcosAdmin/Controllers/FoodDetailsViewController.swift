@@ -40,9 +40,9 @@ class FoodDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let printButtonImage = UIImage(named: K.Images.more)
-        let printButtonTintedImage = printButtonImage?.withRenderingMode(.alwaysTemplate)
-        moreButton.setImage(printButtonTintedImage, for: .normal)
+        let moreButtonImage = UIImage(named: K.Images.more)
+        let moreButtonTintedImage = moreButtonImage?.withRenderingMode(.alwaysTemplate)
+        moreButton.setImage(moreButtonTintedImage, for: .normal)
         moreButton.tintColor = UIColor.init(named: K.BrandColors.primaryColor)
     }
     
@@ -281,11 +281,22 @@ class FoodDetailsViewController: UIViewController {
         }
     }
     
+    @IBAction func extraIngredientPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: K.Segues.foodDetailsToExtraIngredients, sender: self)
+    }
+    
     func alert(title: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: K.Texts.ok, style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         return
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segues.foodDetailsToExtraIngredients {
+            let destinationVC = segue.destination as! ExtraIngredientsListViewController
+            destinationVC.foodType = foodType
+        }
     }
 
 }

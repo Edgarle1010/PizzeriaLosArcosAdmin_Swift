@@ -65,6 +65,8 @@ class ExtraIngredientDetailsViewController: UIViewController {
         }
 
         blockInterface(extraIngredient)
+        
+        dismiss(animated: true)
     }
     
     func loadExtraIngredientData(_ extraIngredient: ExtraIngredient) {
@@ -98,8 +100,19 @@ class ExtraIngredientDetailsViewController: UIViewController {
         loadViewIfNeeded()
         titleLabel.text = extraIngredient.title
         bPriceTextField.text = "$\(extraIngredient.bPrice)"
-        mPriceTextField.text = "$\(extraIngredient.mPrice ?? 0)"
-        sPriceTextField.text = "$\(extraIngredient.sPrice ?? 0)"
+        
+        if let mPrice = extraIngredient.mPrice {
+            mPriceTextField.text = "$\(mPrice)"
+        } else {
+            mPriceTextField.text = "N/A"
+        }
+        
+        if let sPrice = extraIngredient.sPrice {
+            sPriceTextField.text = "$\(sPrice)"
+        } else {
+            sPriceTextField.text = "N/A"
+        }
+        
         listPositionTextField.text = "\(extraIngredient.listPosition ?? 0)"
         
         setMenuMore(extraIngredient)
@@ -139,13 +152,17 @@ class ExtraIngredientDetailsViewController: UIViewController {
         self.bPriceTextField.text = "\(extraIngredient.bPrice)"
         self.bPriceTextField.alpha = 1
         
-        self.mPriceTextField.isEnabled = true
-        self.mPriceTextField.text = "\(extraIngredient.mPrice ?? 0)"
-        self.mPriceTextField.alpha = 1
+        if let mPrice = extraIngredient.mPrice {
+            mPriceTextField.isEnabled = true
+            mPriceTextField.text = "\(mPrice)"
+            mPriceTextField.alpha = 1
+        }
         
-        self.sPriceTextField.isEnabled = true
-        self.sPriceTextField.text = "\(extraIngredient.sPrice ?? 0)"
-        self.sPriceTextField.alpha = 1
+        if let sPrice = extraIngredient.sPrice {
+            sPriceTextField.isEnabled = true
+            sPriceTextField.text = "\(sPrice)"
+            sPriceTextField.alpha = 1
+        }
         
         self.listPositionTextField.isEnabled = true
         self.listPositionTextField.alpha = 1
@@ -181,9 +198,8 @@ class ExtraIngredientDetailsViewController: UIViewController {
                                 self.db.collection(K.Firebase.extraIngredientsCollection).document(doc.documentID).updateData([
                                     K.Firebase.listPosition: Int(self.listPositionTextField.text!) ?? extraIngredient.listPosition!,
                                     K.Firebase.bPrice: Int(self.bPriceTextField.text!) ?? extraIngredient.bPrice,
-                                    K.Firebase.bPrice: Int(self.bPriceTextField.text!) ?? extraIngredient.bPrice,
-                                    K.Firebase.mPrice: Int(self.mPriceTextField.text!) ?? extraIngredient.mPrice ?? 0,
-                                    K.Firebase.sPrice: Int(self.sPriceTextField.text!) ?? extraIngredient.sPrice ?? 0
+                                    K.Firebase.mPrice: Int(self.mPriceTextField.text!) as Any,
+                                    K.Firebase.sPrice: Int(self.sPriceTextField.text!) as Any
                                 ]) { err in
                                     ProgressHUD.dismiss()
                                     if let err = err {

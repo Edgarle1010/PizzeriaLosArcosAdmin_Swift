@@ -90,13 +90,42 @@ class FoodDetailsViewController: UIViewController {
         titleLabel.text = food.title
         descriptionTextView.text = food.description
         bPriceTextField.text = "$\(food.bPrice)"
-        mPriceTextField.text = "$\(food.mPrice ?? 0)"
-        sPriceTextField.text = "$\(food.sPrice ?? 0)"
+        
+        if let mPrice = food.mPrice {
+            mPriceTextField.text = "$\(mPrice)"
+        } else {
+            mPriceTextField.text = "N/A"
+        }
+        
+        if let sPrice = food.sPrice {
+            sPriceTextField.text = "$\(sPrice)"
+        } else {
+            sPriceTextField.text = "N/A"
+        }
+        
         listPositionTextField.text = "\(food.listPosition ?? 0)"
         
-        guard let foodType = foodType else {
+        guard var foodType = foodType else {
             return
         }
+        
+        let id = food.id
+        if id.contains(K.Texts.HOTDOG_ID) {
+            foodType = K.Texts.HOTDOG_FOOD_TYPE
+        } else if id.contains(K.Texts.SEA_FOOD) {
+            if id.elementsEqual(K.Texts.SHRIMP_ID) {
+                foodType = K.Texts.SHRIMP_FOOD_TYPE
+            } else if id.elementsEqual(K.Texts.FISH_STEAK_ID) {
+                foodType = K.Texts.FISH_STEAK_FOOD_TYPE
+            } else {
+                if id.contains(K.Texts.FISH_STEAK_TITLE) {
+                    foodType = K.Texts.FISH_STEAK_FOOD_TYPE
+                } else {
+                    foodType = K.Texts.RANCH_SHRIMP_FOOD_TYPE
+                }
+            }
+        }
+        
         getExtraIngredients(foodType)
         
         setMenuMore(food)
@@ -180,8 +209,8 @@ class FoodDetailsViewController: UIViewController {
                                     K.Firebase.description: self.descriptionTextView.text ?? food.description!,
                                     K.Firebase.listPosition: Int(self.listPositionTextField.text!) ?? food.listPosition!,
                                     K.Firebase.bPrice: Int(self.bPriceTextField.text!) ?? food.bPrice,
-                                    K.Firebase.mPrice: Int(self.mPriceTextField.text!) ?? food.mPrice ?? 0,
-                                    K.Firebase.sPrice: Int(self.sPriceTextField.text!) ?? food.sPrice ?? 0
+                                    K.Firebase.mPrice: Int(self.mPriceTextField.text!) as Any,
+                                    K.Firebase.sPrice: Int(self.sPriceTextField.text!) as Any
                                 ]) { err in
                                     ProgressHUD.dismiss()
                                     if let err = err {
@@ -223,31 +252,35 @@ class FoodDetailsViewController: UIViewController {
     }
     
     func enableInterface(_ food: Food) {
-        self.saveButton.isHidden = false
-        self.saveButton.alpha = 1
-        self.cancelButton.isHidden = false
-        self.cancelButton.alpha = 1
+        saveButton.isHidden = false
+        saveButton.alpha = 1
+        cancelButton.isHidden = false
+        cancelButton.alpha = 1
         
-        self.descriptionTextView.isEditable = true
-        self.descriptionTextView.alpha = 1
+        descriptionTextView.isEditable = true
+        descriptionTextView.alpha = 1
         
-        self.bPriceTextField.isEnabled = true
-        self.bPriceTextField.text = "\(food.bPrice)"
-        self.bPriceTextField.alpha = 1
+        bPriceTextField.isEnabled = true
+        bPriceTextField.text = "\(food.bPrice)"
+        bPriceTextField.alpha = 1
         
-        self.mPriceTextField.isEnabled = true
-        self.mPriceTextField.text = "\(food.mPrice ?? 0)"
-        self.mPriceTextField.alpha = 1
+        if let mPrice = food.mPrice {
+            mPriceTextField.isEnabled = true
+            mPriceTextField.text = "\(mPrice)"
+            mPriceTextField.alpha = 1
+        }
         
-        self.sPriceTextField.isEnabled = true
-        self.sPriceTextField.text = "\(food.sPrice ?? 0)"
-        self.sPriceTextField.alpha = 1
+        if let sPrice = food.sPrice {
+            sPriceTextField.isEnabled = true
+            sPriceTextField.text = "\(sPrice)"
+            sPriceTextField.alpha = 1
+        }
         
-        self.listPositionTextField.isEnabled = true
-        self.listPositionTextField.alpha = 1
+        listPositionTextField.isEnabled = true
+        listPositionTextField.alpha = 1
         
-        self.extraIngredientButton.isEnabled = true
-        self.extraIngredientButton.alpha = 1
+        extraIngredientButton.isEnabled = true
+        extraIngredientButton.alpha = 1
     }
     
     func blockInterface(_ food: Food) {
@@ -293,6 +326,27 @@ class FoodDetailsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let food = food else {
+            return
+        }
+        
+        let id = food.id
+        if id.contains(K.Texts.HOTDOG_ID) {
+            foodType = K.Texts.HOTDOG_FOOD_TYPE
+        } else if id.contains(K.Texts.SEA_FOOD) {
+            if id.elementsEqual(K.Texts.SHRIMP_ID) {
+                foodType = K.Texts.SHRIMP_FOOD_TYPE
+            } else if id.elementsEqual(K.Texts.FISH_STEAK_ID) {
+                foodType = K.Texts.FISH_STEAK_FOOD_TYPE
+            } else {
+                if id.contains(K.Texts.FISH_STEAK_TITLE) {
+                    foodType = K.Texts.FISH_STEAK_FOOD_TYPE
+                } else {
+                    foodType = K.Texts.RANCH_SHRIMP_FOOD_TYPE
+                }
+            }
+        }
+        
         if segue.identifier == K.Segues.foodDetailsToExtraIngredients {
             let destinationVC = segue.destination as! ExtraIngredientsListViewController
             destinationVC.foodType = foodType

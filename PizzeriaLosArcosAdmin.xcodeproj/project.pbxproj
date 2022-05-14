@@ -12,6 +12,7 @@
 		B334241B282232CF006024BF /* ExtraIngredientDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B334241A282232CF006024BF /* ExtraIngredientDetailsViewController.swift */; };
 		B3431BE52818F66B00973C1C /* FullOrderHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3431BE42818F66B00973C1C /* FullOrderHistoryViewController.swift */; };
 		B395CCB128125D4A003EE2A4 /* OrdersHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B395CCB028125D4A003EE2A4 /* OrdersHistoryViewController.swift */; };
+		B3AEB4E0282E100900D2CF11 /* SubFoodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AEB4DF282E100900D2CF11 /* SubFoodTableViewController.swift */; };
 		B3B0B415280E3A3500F01D89 /* ServiceMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B0B414280E3A3500F01D89 /* ServiceMessageTableViewController.swift */; };
 		B3B0B419280F34BC00F01D89 /* ClientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B0B418280F34BC00F01D89 /* ClientsTableViewController.swift */; };
 		B3B0B41B280F355900F01D89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B0B41A280F355900F01D89 /* User.swift */; };
@@ -54,6 +55,7 @@
 		B334241A282232CF006024BF /* ExtraIngredientDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraIngredientDetailsViewController.swift; sourceTree = "<group>"; };
 		B3431BE42818F66B00973C1C /* FullOrderHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullOrderHistoryViewController.swift; sourceTree = "<group>"; };
 		B395CCB028125D4A003EE2A4 /* OrdersHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersHistoryViewController.swift; sourceTree = "<group>"; };
+		B3AEB4DF282E100900D2CF11 /* SubFoodTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubFoodTableViewController.swift; sourceTree = "<group>"; };
 		B3B0B414280E3A3500F01D89 /* ServiceMessageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMessageTableViewController.swift; sourceTree = "<group>"; };
 		B3B0B418280F34BC00F01D89 /* ClientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientsTableViewController.swift; sourceTree = "<group>"; };
 		B3B0B41A280F355900F01D89 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				B3431BE42818F66B00973C1C /* FullOrderHistoryViewController.swift */,
 				B3EC6E38281B8919006D8D2C /* MenuTableViewController.swift */,
 				B3EC6E3A281B92E1006D8D2C /* FoodListTableViewController.swift */,
+				B3AEB4DF282E100900D2CF11 /* SubFoodTableViewController.swift */,
 				B3EC6E3C281BA612006D8D2C /* FoodDetailsViewController.swift */,
 				B334241828222BAB006024BF /* ExtraIngredientsListViewController.swift */,
 				B334241A282232CF006024BF /* ExtraIngredientDetailsViewController.swift */,
@@ -331,6 +334,7 @@
 				B3E6FFEB27F4129C006AF6AE /* Food.swift in Sources */,
 				B3E6FFDF27F403AD006AF6AE /* AppManager.swift in Sources */,
 				B395CCB128125D4A003EE2A4 /* OrdersHistoryViewController.swift in Sources */,
+				B3AEB4E0282E100900D2CF11 /* SubFoodTableViewController.swift in Sources */,
 				B3B0B41D280F5D7600F01D89 /* ClientDetailsViewController.swift in Sources */,
 				B3431BE52818F66B00973C1C /* FullOrderHistoryViewController.swift in Sources */,
 				B3F905CB27F2D4AB00E647B9 /* Constants.swift in Sources */,

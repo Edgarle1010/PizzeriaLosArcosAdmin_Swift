@@ -758,7 +758,7 @@
             <objects>
                 <viewController storyboardIdentifier="ClientDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aOz-V3-jTy" customClass="ClientDetailsViewController" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hiZ-Ck-nwN">
-                        <rect key="frame" x="0.0" y="0.0" width="818" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="818.5" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5A-q2-Z4d">
@@ -1081,7 +1081,7 @@
             <objects>
                 <viewController id="iR8-ba-CuY" customClass="FoodDetailsViewController" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7bc-bD-bkD">
-                        <rect key="frame" x="0.0" y="0.0" width="818" height="834"/>
+                        <rect key="frame" x="0.0" y="0.0" width="818.5" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F0X-s0-vic">
@@ -1514,10 +1514,42 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="GZO-lH-XBV"/>
+                    <connections>
+                        <segue destination="b8v-WB-gFY" kind="show" identifier="FoodToSubFood" id="zkJ-VK-hJT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="269-2X-n1P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4846" y="1219"/>
+        </scene>
+        <!--Sub Food Table View Controller-->
+        <scene sceneID="Ndq-xY-dbp">
+            <objects>
+                <tableViewController id="b8v-WB-gFY" customClass="SubFoodTableViewController" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="t1r-pP-gFa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="834"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="subFoodCell" id="yhK-1X-3YA">
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yhK-1X-3YA" id="tqh-9M-BeS">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="b8v-WB-gFY" id="hHZ-Z2-g9z"/>
+                            <outlet property="delegate" destination="b8v-WB-gFY" id="p3Y-Kr-wou"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="EDT-L3-444"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uZN-iq-uKh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5603" y="1219"/>
         </scene>
         <!--Extra Ingredient Details View Controller-->
         <scene sceneID="eVQ-ts-Pwy">
@@ -1905,7 +1937,20 @@
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wx8-Ey-9Zw" customClass="TabBarController" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="KNO-4x-wct"/>
+                    <navigationItem key="navigationItem" id="KNO-4x-wct">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="KU4-gq-b3b">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="BWg-BB-9lU">
+                                <rect key="frame" x="1149" y="12.5" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="logout"/>
+                                <connections>
+                                    <action selector="logoutPressed:" destination="Wx8-Ey-9Zw" eventType="touchUpInside" id="OlX-7Z-RC0"/>
+                                </connections>
+                            </button>
+                            <color key="tintColor" name="primaryColor"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iYo-L4-Vyr">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1964,13 +2009,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="J46-rr-gUP"/>
+        <segue reference="cnV-fT-M24"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="back" width="25" height="25"/>
         <image name="background" width="1280" height="853"/>
         <image name="clients" width="25" height="25"/>
         <image name="logo" width="896" height="400"/>
+        <image name="logout" width="25" height="25"/>
         <image name="menucard" width="25" height="25"/>
         <image name="more" width="25" height="25"/>
         <image name="reception" width="25" height="25"/>

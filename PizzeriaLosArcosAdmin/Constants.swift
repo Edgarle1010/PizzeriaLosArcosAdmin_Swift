@@ -211,6 +211,7 @@ struct K {
         static let menuToFood = "MenuToFood"
         static let foodDetailsToExtraIngredients = "FoodDetailsToExtraIngredients"
         static let extraIngredientsToExtraIngredientsDetails = "ExtraIngredientsToExtraIngredientsDetails"
+        static let foodToSubFood = "FoodToSubFood"
     }
     
     struct ViewControllers {
@@ -247,5 +248,6 @@ struct K {
         static let customerCell = "customerCell"
         static let menuCell = "menuCell"
         static let extraIngredientListCell = "extraIngredientListCell"
+        static let subFoodCell = "subFoodCell"
     }
 }

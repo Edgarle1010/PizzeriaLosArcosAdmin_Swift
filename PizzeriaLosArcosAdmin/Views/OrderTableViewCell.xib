@@ -145,7 +145,7 @@
                 <outlet property="timeEstimatedDelivery" destination="Lum-mI-beQ" id="PwV-ey-2fY"/>
                 <outlet property="viewCell" destination="JZd-Zx-RdB" id="hh5-mN-EoS"/>
             </connections>
-            <point key="canvasLocation" x="278.26086956521743" y="133.25892857142856"/>
+            <point key="canvasLocation" x="278.26086956521743" y="132.58928571428572"/>
         </tableViewCell>
     </objects>
     <resources>

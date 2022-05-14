@@ -1,8 +1,8 @@
 //
-//  FoodListTableViewController.swift
+//  SubFoodTableViewController.swift
 //  PizzeriaLosArcosAdmin
 //
-//  Created by Edgar López Enríquez on 28/04/22.
+//  Created by Edgar López Enríquez on 12/05/22.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestoreSwift
 import ProgressHUD
 
-class FoodListTableViewController: UITableViewController {
+class SubFoodTableViewController: UITableViewController {
     
     var foodType: String?
     var foodTitle: String?
@@ -66,14 +66,6 @@ class FoodListTableViewController: UITableViewController {
         self.present(alert, animated: true, completion: nil)
         return
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.Segues.foodToSubFood {
-            let destinationVC = segue.destination as! SubFoodTableViewController
-            destinationVC.foodType = foodType
-            destinationVC.foodTitle = foodTitle
-        }
-    }
 
     // MARK: - Table view data source
 
@@ -86,7 +78,7 @@ class FoodListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.Collections.foodCell, for: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.Collections.subFoodCell, for: indexPath) as UITableViewCell
         
         food = foodList[indexPath.row]
         
@@ -100,29 +92,10 @@ class FoodListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedFood = foodList[indexPath.row]
         
-        let id = selectedFood.id
-        foodTitle = selectedFood.title
-        if id == K.Texts.SODA_ID {
-            foodType = K.Texts.SODA_FOOD_TYPE
-            self.performSegue(withIdentifier: K.Segues.foodToSubFood, sender: self)
-        } else if id == K.Texts.FUZETEA_ID {
-            foodType = K.Texts.FUZETEA_FOOD_TYPE
-            self.performSegue(withIdentifier: K.Segues.foodToSubFood, sender: self)
-        } else if id == K.Texts.SMOOTHIE_ID {
-            foodType = K.Texts.SMOOTHIE_FOOD_TYPE
-            self.performSegue(withIdentifier: K.Segues.foodToSubFood, sender: self)
-        } else if id == K.Texts.MILKSHAKE_ID {
-            foodType = K.Texts.MILKSHAKE_FOOD_TYPE
-            self.performSegue(withIdentifier: K.Segues.foodToSubFood, sender: self)
-        } else if id == K.Texts.ICECREAM_FOOD_ID {
-            foodType = K.Texts.ICECREAM_FOOD_TYPE
-            self.performSegue(withIdentifier: K.Segues.foodToSubFood, sender: self)
-        } else {
-            if let splitVC = self.splitViewController, let detailVC = splitVC.viewControllers[1] as? FoodDetailsViewController {
-                detailVC.food = selectedFood
-                detailVC.foodType = foodType
-            }
+        if let splitVC = self.splitViewController, let detailVC = splitVC.viewControllers[1] as? FoodDetailsViewController {
+            detailVC.food = selectedFood
+            detailVC.foodType = foodType
         }
     }
-
+    
 }

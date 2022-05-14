@@ -34,6 +34,7 @@ class FoodDetailsViewController: UIViewController {
         }
     }
     var extraIngredientsList: [ExtraIngredient] = []
+    var foodList: [Food] = []
     
     let db = Firestore.firestore()
 
@@ -315,7 +316,9 @@ class FoodDetailsViewController: UIViewController {
     }
     
     @IBAction func extraIngredientPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: K.Segues.foodDetailsToExtraIngredients, sender: self)
+        if !extraIngredientsList.isEmpty {
+            performSegue(withIdentifier: K.Segues.foodDetailsToExtraIngredients, sender: self)
+        }
     }
     
     func alert(title: String?, message: String?) {
